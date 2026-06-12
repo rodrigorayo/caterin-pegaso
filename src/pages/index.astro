@@ -200,19 +200,19 @@ const testimonials = [
 
 <Layout title="Montalvo Catering - Comida Saludable Directo a tu Oficina">
   <!-- Header / Navigation -->
-  <header class="fixed w-full bg-white/85 backdrop-blur-lg z-50 border-b border-brand-light transition-all duration-300">
+  <header class="fixed w-full bg-white/95 backdrop-blur-lg z-50 border-b border-brand-light transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-24">
-        <!-- Logo (Vector-accurate CSS replica of user's uploaded logo - enlarged) -->
-        <a href="#hero" class="flex items-center gap-4 group">
-          <div class="w-20 h-20 rounded-full bg-white border border-brand-gold flex flex-col items-center justify-center shadow-sm relative overflow-hidden px-2 shrink-0 group-hover:scale-102 transition-transform">
-            <span class="font-cursive text-brand-dark text-2xl leading-none pt-2">Montalvo</span>
-            <div class="w-14 h-[1px] bg-gradient-to-r from-transparent via-brand-gold to-transparent my-1"></div>
-            <span class="font-sans text-[7px] tracking-[0.25em] text-brand-dark font-extrabold leading-none uppercase">Catering</span>
+      <div class="flex justify-between items-center h-20 md:h-24">
+        <!-- Logo -->
+        <a href="#hero" class="flex items-center gap-2 md:gap-4 group">
+          <div class="w-14 h-14 md:w-20 md:h-20 rounded-full bg-white border border-brand-gold flex flex-col items-center justify-center shadow-sm relative overflow-hidden px-1 md:px-2 shrink-0 group-hover:scale-102 transition-transform">
+            <span class="font-cursive text-brand-dark text-lg md:text-2xl leading-none pt-1 md:pt-2">Montalvo</span>
+            <div class="w-10 md:w-14 h-[1px] bg-gradient-to-r from-transparent via-brand-gold to-transparent my-0.5 md:my-1"></div>
+            <span class="font-sans text-[5px] md:text-[7px] tracking-[0.25em] text-brand-dark font-extrabold leading-none uppercase">Catering</span>
           </div>
           <div class="flex flex-col">
-            <span class="font-serif font-extrabold text-2xl text-brand-dark tracking-tight leading-none">Montalvo</span>
-            <span class="font-sans text-[11px] tracking-[0.3em] text-brand-gold font-bold uppercase mt-1">Catering</span>
+            <span class="font-serif font-extrabold text-lg md:text-2xl text-brand-dark tracking-tight leading-none">Montalvo</span>
+            <span class="font-sans text-[8px] md:text-[11px] tracking-[0.3em] text-brand-gold font-bold uppercase mt-0.5 md:mt-1">Catering</span>
           </div>
         </a>
         
@@ -220,27 +220,45 @@ const testimonials = [
         <nav class="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-gray-600">
           <a href="#hero" class="hover:text-brand-gold transition-colors">Inicio</a>
           <a href="#nosotros" class="hover:text-brand-gold transition-colors">Nosotros</a>
-          <a href="#nuestros-bowls" class="hover:text-brand-gold transition-colors">Nuestros Bowls</a>
+          <a href="#nuestros-bowls" class="hover:text-brand-gold transition-colors">Bowls</a>
           <a href="#carbs" class="hover:text-brand-gold transition-colors">Carbohidratos</a>
-          <a href="#planes" class="hover:text-brand-gold transition-colors">Nuestros Planes</a>
-          <a href="#equipo" class="hover:text-brand-gold transition-colors">Nuestro Equipo</a>
+          <a href="#planes" class="hover:text-brand-gold transition-colors">Planes</a>
+          <a href="#equipo" class="hover:text-brand-gold transition-colors">Equipo</a>
         </nav>
 
-        <!-- CTA Header -->
-        <div class="flex items-center gap-4">
-          <a href={`${baseWhatsappLink}?text=Hola!%20Me%20gustaría%20saber%20más%20sobre%20sus%20servicios%20de%20Montalvo%20Catering.`} target="_blank" class="bg-brand-gold hover:bg-brand-gold-dark text-white px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5">
-            Pedir Ahora
+        <!-- CTA & Mobile Menu Toggle -->
+        <div class="flex items-center gap-3 md:gap-4">
+          <a href={`${baseWhatsappLink}?text=Hola!%20Me%20gustaría%20saber%20más%20sobre%20sus%20servicios%20de%20Montalvo%20Catering.`} target="_blank" class="bg-brand-gold hover:bg-brand-gold-dark text-white px-4 py-2 md:px-6 md:py-2.5 rounded-full font-bold text-[10px] md:text-xs uppercase tracking-wider transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 whitespace-nowrap">
+            Pedir
           </a>
+          <!-- Hamburger Button -->
+          <button id="mobile-menu-btn" class="lg:hidden text-brand-dark p-2 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </button>
         </div>
       </div>
+    </div>
+    
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-brand-light">
+      <nav class="flex flex-col items-center py-4 space-y-4 text-sm font-bold uppercase tracking-wider text-gray-600 shadow-lg">
+        <a href="#hero" class="mobile-link hover:text-brand-gold transition-colors">Inicio</a>
+        <a href="#nosotros" class="mobile-link hover:text-brand-gold transition-colors">Nosotros</a>
+        <a href="#nuestros-bowls" class="mobile-link hover:text-brand-gold transition-colors">Bowls</a>
+        <a href="#carbs" class="mobile-link hover:text-brand-gold transition-colors">Carbohidratos</a>
+        <a href="#planes" class="mobile-link hover:text-brand-gold transition-colors">Planes</a>
+        <a href="#equipo" class="mobile-link hover:text-brand-gold transition-colors">Equipo</a>
+      </nav>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <!-- Hero Section -->
   <section id="hero" class="relative pt-44 pb-24 md:pt-56 md:pb-36 bg-cover bg-no-repeat overflow-hidden" style="background-image: url('/media__1781217634034.jpg'); background-position: center top;">
     <!-- Subtle soft shadow layer underneath text card for absolute contrast -->
     <div class="absolute inset-y-0 left-0 w-full lg:w-1/2 bg-gradient-to-r from-brand-light/20 to-transparent pointer-events-none"></div>
+
+    <!-- Dark overlay for mobile only (screens smaller than lg) to improve text readability -->
+    <div class="absolute inset-0 bg-black/60 lg:hidden pointer-events-none"></div>
 
     <!-- Decorative Floating Leaves and Shapes -->
     <div class="absolute top-20 left-10 text-3xl animate-bounce duration-1000 opacity-20 select-none z-10">🍃</div>
@@ -249,19 +267,19 @@ const testimonials = [
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="grid lg:grid-cols-12 gap-12 items-center">
-        <!-- Text Content fully aligned to the far left -->
-        <div class="lg:col-span-8 space-y-8 text-left lg:-ml-12 xl:-ml-24">
+        <!-- Text Content centered on mobile, fully aligned to the far left on desktop -->
+        <div class="lg:col-span-8 space-y-8 text-center lg:text-left lg:-ml-12 xl:-ml-24">
           
-          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-dark leading-tight">
-            Comida Sana Para <br class="hidden sm:inline" />
+          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white lg:text-brand-dark leading-tight">
+            Catering Gourmet <br class="hidden sm:inline" />
             <span class="text-brand-gold relative inline-block">
-              Una Vida Feliz
+              Para Cada Ocasión
               <svg class="absolute left-0 bottom-0 w-full h-2 text-brand-gold-light/45 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0,7 C30,2 70,2 100,7 L100,10 L0,10 Z" fill="currentColor"></path></svg>
             </span>
           </h1>
 
-          <p class="text-base sm:text-lg text-gray-700 max-w-xl mx-auto lg:mx-0 leading-relaxed font-sans font-medium">
-            Montalvo Catering es tu cocina saludable de confianza. Preparamos menús nutricionales premium diarios y te los llevamos directo a tu trabajo o casa para que comas rico, balanceado y sin complicaciones.
+          <p class="text-base sm:text-lg text-gray-200 lg:text-gray-700 max-w-xl mx-auto lg:mx-0 leading-relaxed font-sans font-medium">
+            Montalvo Catering es tu servicio premium de confianza en Cochabamba. Fusionamos alta cocina gourmet para eventos sociales y corporativos, ensaladas de autor frescas y variados platos balanceados que llevan sabor y distinción a tu mesa.
           </p>
 
           <div class="flex justify-center lg:justify-start">
@@ -270,28 +288,28 @@ const testimonials = [
             </a>
           </div>
 
-          <!-- Feature Flat Columns (No border, no backgrounds, minimal elegant styling, stacked vertically) -->
-          <div class="flex flex-col gap-6 pt-4">
-            <div class="flex items-start gap-4 text-left">
-              <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold shrink-0">
+          <!-- Feature Flat Columns (No border, no backgrounds, minimal elegant styling, side-by-side on mobile, stacked vertically on desktop) -->
+          <div class="grid grid-cols-2 gap-4 sm:gap-6 pt-4 max-w-xl mx-auto lg:flex lg:flex-col lg:gap-6 lg:max-w-none lg:mx-0">
+            <div class="flex flex-col lg:flex-row items-center lg:items-start gap-4 text-center lg:text-left">
+              <div class="w-12 h-12 rounded-xl bg-brand-gold/15 flex items-center justify-center text-brand-gold shrink-0">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
               </div>
               <div>
-                <h4 class="font-bold text-brand-dark text-sm">Directo a tu Oficina</h4>
-                <p class="text-xs text-gray-500 mt-1 leading-relaxed">Llegamos antes del almuerzo para que comas fresco y en tu horario.</p>
+                <h4 class="font-bold text-white lg:text-brand-dark text-sm">Directo a tu Oficina</h4>
+                <p class="text-xs text-gray-300 lg:text-gray-500 mt-1 leading-relaxed">Llegamos antes del almuerzo para que comas fresco y en tu horario.</p>
               </div>
             </div>
-            <div class="flex items-start gap-4 text-left">
-              <div class="w-12 h-12 rounded-xl bg-brand-gold-light/20 flex items-center justify-center text-brand-gold-dark shrink-0">
+            <div class="flex flex-col lg:flex-row items-center lg:items-start gap-4 text-center lg:text-left">
+              <div class="w-12 h-12 rounded-xl bg-brand-gold-light/20 flex items-center justify-center text-brand-gold lg:text-brand-gold-dark shrink-0">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
               <div>
-                <h4 class="font-bold text-brand-dark text-sm">Nutrición Calculada</h4>
-                <p class="text-xs text-gray-500 mt-1 leading-relaxed">Carbohidratos complejos, grasas buenas y proteínas de alta calidad.</p>
+                <h4 class="font-bold text-white lg:text-brand-dark text-sm">Nutrición Calculada</h4>
+                <p class="text-xs text-gray-300 lg:text-gray-500 mt-1 leading-relaxed">Carbohidratos complejos, grasas buenas y proteínas de alta calidad.</p>
               </div>
             </div>
           </div>
@@ -303,67 +321,101 @@ const testimonials = [
     </div>
   </section>
   <!-- Section: Collage - Kitchen Details (Sobre Montalvo Catering) -->
-  <section id="nosotros" class="py-24 bg-[#f4ebe1] border-y border-brand-light">
+  <section id="nosotros" class="py-24 bg-[#f4ebe1] border-y border-brand-light overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-12 gap-12 items-center">
-        <!-- Collage of images (Left) -->
-        <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+        <!-- Collage of images (Left) - Hidden on mobile, shown on desktop -->
+        <div class="hidden lg:grid lg:col-span-6 grid-cols-2 gap-4">
           <div class="space-y-4">
             <div class="rounded-3xl overflow-hidden shadow-md transform hover:scale-102 transition-transform duration-300 relative group">
-              <img src="/media__1781224279688.jpg" alt="Plato saludable" class="w-full object-cover h-64" />
+              <img src="/media__1781224279688.jpg" alt="Menú Balanceado" class="w-full object-cover h-64" />
               <div class="absolute inset-0 bg-black/20 flex items-end p-4 opacity-90 transition-opacity">
-                <span class="text-white font-bold text-sm tracking-wide bg-brand-dark/40 px-3 py-1.5 rounded-full backdrop-blur-xs">Plato saludable</span>
+                <span class="text-white font-bold text-sm tracking-wide bg-brand-dark/40 px-3 py-1.5 rounded-full backdrop-blur-xs">Menú Balanceado</span>
               </div>
             </div>
             <div class="rounded-3xl overflow-hidden shadow-md transform hover:scale-102 transition-transform duration-300 relative group">
-              <img src="/media__1781224281635.jpg" alt="Preparación saludable" class="w-full object-cover h-44" />
+              <img src="/media__1781224281635.jpg" alt="Cocina Profesional" class="w-full object-cover h-44" />
               <div class="absolute inset-0 bg-black/20 flex items-end p-4 opacity-90 transition-opacity">
-                <span class="text-white font-bold text-sm tracking-wide bg-brand-dark/40 px-3 py-1.5 rounded-full backdrop-blur-xs">Preparación saludable</span>
+                <span class="text-white font-bold text-sm tracking-wide bg-brand-dark/40 px-3 py-1.5 rounded-full backdrop-blur-xs">Cocina Profesional</span>
               </div>
             </div>
           </div>
           <div class="space-y-4 pt-8">
             <div class="rounded-3xl overflow-hidden shadow-md transform hover:scale-102 transition-transform duration-300 relative group">
-              <img src="/media__1781224283556.jpg" alt="Ingredientes frescos" class="w-full object-cover h-44" />
+              <img src="/media__1781224283556.jpg" alt="Insumos Ecológicos" class="w-full object-cover h-44" />
               <div class="absolute inset-0 bg-black/20 flex items-end p-4 opacity-90 transition-opacity">
-                <span class="text-white font-bold text-sm tracking-wide bg-brand-dark/40 px-3 py-1.5 rounded-full backdrop-blur-xs">Ingredientes frescos</span>
+                <span class="text-white font-bold text-sm tracking-wide bg-brand-dark/40 px-3 py-1.5 rounded-full backdrop-blur-xs">Insumos Ecológicos</span>
               </div>
             </div>
             <div class="rounded-3xl overflow-hidden shadow-md transform hover:scale-102 transition-transform duration-300 relative group">
-              <img src="/media__1781224285406.jpg" alt="Ensaladas de catering" class="w-full object-cover h-64" />
+              <img src="/media__1781224285406.jpg" alt="Catering Gourmet" class="w-full object-cover h-64" />
               <div class="absolute inset-0 bg-black/20 flex items-end p-4 opacity-90 transition-opacity">
-                <span class="text-white font-bold text-sm tracking-wide bg-brand-dark/40 px-3 py-1.5 rounded-full backdrop-blur-xs">Ensaladas de catering</span>
+                <span class="text-white font-bold text-sm tracking-wide bg-brand-dark/40 px-3 py-1.5 rounded-full backdrop-blur-xs">Catering Gourmet</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Text details (Right) -->
-        <div class="lg:col-span-6 space-y-6">
-          <span class="font-cursive text-brand-dark text-3xl block">Sobre Montalvo Catering</span>
-          <h2 class="font-serif text-3xl md:text-5xl font-extrabold text-brand-dark leading-tight">
-            Cocinamos con Pasión para Cuidar tu Día a Día
-          </h2>
-          <p class="text-gray-700 leading-relaxed font-semibold">
-            Nuestra cocina opera bajo un concepto de nutrición inteligente premium. Creemos que comer sano no tiene que ser monótono ni requerir que pases horas cocinando. 
-          </p>
-          <p class="text-gray-600 leading-relaxed text-sm">
-            Diseñamos planes equilibrados con el balance exacto de macronutrientes que necesitas. Cocinamos frescos todos los días utilizando ingredientes orgánicos locales y despachamos en empaques sustentables listos para servir o calentar.
-          </p>
-          <p class="text-gray-600 leading-relaxed text-sm">
-            Llevamos <strong>más de 15 años de experiencia</strong> acompañando almuerzos y eventos en <strong>Cochabamba (CBBA - BO)</strong>. Todas nuestras verduras son ecológicas y agroecológicas, y la carne que utilizamos es de la mejor calidad seleccionada del mercado.
-          </p>
-          <div class="flex items-center gap-6 pt-4">
-            <div class="text-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 min-w-[120px]">
-              <span class="block text-3xl font-extrabold text-brand-gold">100%</span>
-              <span class="text-xs text-gray-500 font-semibold uppercase">Fresco</span>
+        <!-- Carousel for mobile only (screens smaller than lg) -->
+        <div class="lg:hidden lg:col-span-6 w-full relative">
+          <!-- Scrollable image track with CSS snap -->
+          <div id="nosotros-carousel" class="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 scroll-smooth" style="scrollbar-width: none; -ms-overflow-style: none;">
+            <!-- Slide 1 -->
+            <div class="snap-center shrink-0 w-4/5 sm:w-2/3 relative rounded-3xl overflow-hidden aspect-[4/3] shadow-md">
+              <img src="/media__1781224279688.jpg" alt="Menú Balanceado" class="w-full h-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent flex items-end p-4">
+                <span class="text-white font-bold text-sm tracking-wide bg-brand-dark/40 px-3 py-1.5 rounded-full backdrop-blur-xs">Menú Balanceado</span>
+              </div>
             </div>
-            <div class="text-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 min-w-[120px]">
-              <span class="block text-3xl font-extrabold text-brand-gold-dark">0%</span>
-              <span class="text-xs text-gray-500 font-semibold uppercase">Azúcar Añadido</span>
+            <!-- Slide 2 -->
+            <div class="snap-center shrink-0 w-4/5 sm:w-2/3 relative rounded-3xl overflow-hidden aspect-[4/3] shadow-md">
+              <img src="/media__1781224281635.jpg" alt="Cocina Profesional" class="w-full h-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent flex items-end p-4">
+                <span class="text-white font-bold text-sm tracking-wide bg-brand-dark/40 px-3 py-1.5 rounded-full backdrop-blur-xs">Cocina Profesional</span>
+              </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="snap-center shrink-0 w-4/5 sm:w-2/3 relative rounded-3xl overflow-hidden aspect-[4/3] shadow-md">
+              <img src="/media__1781224283556.jpg" alt="Insumos Ecológicos" class="w-full h-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent flex items-end p-4">
+                <span class="text-white font-bold text-sm tracking-wide bg-brand-dark/40 px-3 py-1.5 rounded-full backdrop-blur-xs">Insumos Ecológicos</span>
+              </div>
+            </div>
+            <!-- Slide 4 -->
+            <div class="snap-center shrink-0 w-4/5 sm:w-2/3 relative rounded-3xl overflow-hidden aspect-[4/3] shadow-md">
+              <img src="/media__1781224285406.jpg" alt="Catering Gourmet" class="w-full h-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent flex items-end p-4">
+                <span class="text-white font-bold text-sm tracking-wide bg-brand-dark/40 px-3 py-1.5 rounded-full backdrop-blur-xs">Catering Gourmet</span>
+              </div>
             </div>
           </div>
-          <div class="pt-4">
+          <!-- Carousel Indicators / Dots -->
+          <div class="flex justify-center gap-2 mt-2">
+            <button class="nosotros-carousel-dot w-2.5 h-2.5 rounded-full bg-brand-gold transition-colors duration-200" data-index="0" aria-label="Ver slide 1"></button>
+            <button class="nosotros-carousel-dot w-2.5 h-2.5 rounded-full bg-gray-300 transition-colors duration-200" data-index="1" aria-label="Ver slide 2"></button>
+            <button class="nosotros-carousel-dot w-2.5 h-2.5 rounded-full bg-gray-300 transition-colors duration-200" data-index="2" aria-label="Ver slide 3"></button>
+            <button class="nosotros-carousel-dot w-2.5 h-2.5 rounded-full bg-gray-300 transition-colors duration-200" data-index="3" aria-label="Ver slide 4"></button>
+          </div>
+        </div>
+
+        <!-- Text details (Right) - Centered and compact on mobile -->
+        <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+          <span class="font-cursive text-brand-dark text-2xl sm:text-3xl block">Sobre Montalvo Catering</span>
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-dark leading-tight max-w-2xl mx-auto lg:mx-0">
+            Cocinamos con Pasión para Cuidar tu Día a Día
+          </h2>
+          <div class="space-y-4 max-w-2xl mx-auto lg:mx-0">
+            <p class="text-gray-700 leading-relaxed font-semibold text-sm sm:text-base">
+              Nuestra cocina opera bajo un concepto de nutrición inteligente premium. Creemos que comer sano no tiene que ser monótono ni requerir que pases horas cocinando. 
+            </p>
+            <p class="text-gray-600 leading-relaxed text-xs sm:text-sm">
+              Diseñamos planes equilibrados con el balance exacto de macronutrientes que necesitas. Cocinamos frescos todos los días utilizando ingredientes orgánicos locales y despachamos en empaques sustentables listos para servir o calentar.
+            </p>
+            <p class="text-gray-600 leading-relaxed text-xs sm:text-sm">
+              Llevamos <strong>más de 15 años de experiencia</strong> acompañando almuerzos y eventos en <strong>Cochabamba (CBBA - BO)</strong>. Todas nuestras verduras son ecológicas y agroecológicas, y la carne que utilizamos es de la mejor calidad seleccionada del mercado.
+            </p>
+          </div>
+          <div class="pt-4 flex justify-center lg:justify-start">
             <a href="#planes" class="inline-block bg-[#6e4e37] hover:bg-[#573d2b] text-white text-xs font-bold uppercase tracking-wider px-8 py-4 rounded-full transition-all shadow-md hover:-translate-y-0.5">
               Ver Planes Nutritivos
             </a>
@@ -374,23 +426,23 @@ const testimonials = [
   </section>
 
   <!-- Section: Nuestros Bowls Insignia -->
-  <section id="nuestros-bowls" class="py-24 bg-white">
+  <section id="nuestros-bowls" class="py-16 md:py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-        <span class="font-cursive text-brand-gold text-3xl block">Nuestras especialidades</span>
-        <h2 class="font-serif text-3xl md:text-5xl font-extrabold text-brand-dark">
+      <div class="text-center max-w-3xl mx-auto mb-10 md:mb-12 space-y-3">
+        <span class="font-cursive text-brand-gold text-2xl sm:text-3xl block">Nuestras especialidades</span>
+        <h2 class="font-serif text-3xl md:text-4xl font-extrabold text-brand-dark">
           Elige Uno de Nuestros Bowls
         </h2>
-        <p class="text-gray-600">
+        <p class="text-sm sm:text-base text-gray-600">
           Bowls balanceados, diseñados por nuestra nutricionista y ejecutados a la perfección. Selecciona tu favorito para personalizar su tamaño y proteína en un popup instantáneo.
         </p>
       </div>
 
-      <div class="space-y-12 max-w-5xl mx-auto">
+      <div class="space-y-8 md:space-y-10 max-w-5xl mx-auto">
         {bowls.map((bowl, index) => (
-          <div class="grid md:grid-cols-12 gap-8 items-center bg-brand-light/35 p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300">
-            <!-- Image container: Optimized for square images with titles -->
-            <div class={`md:col-span-6 aspect-square max-h-[380px] md:max-h-none md:h-[400px] rounded-3xl overflow-hidden relative shadow-xs border border-gray-100/50 ${index % 2 === 1 ? 'md:order-last' : ''}`}>
+          <div class="grid md:grid-cols-12 gap-6 md:gap-8 items-center bg-brand-light/35 p-5 sm:p-6 md:p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <!-- Image container: Optimized height for a cleaner, compact presentation -->
+            <div class={`md:col-span-6 aspect-video md:aspect-square h-48 sm:h-64 md:h-[350px] rounded-2xl md:rounded-3xl overflow-hidden relative shadow-xs border border-gray-100/50 ${index % 2 === 1 ? 'md:order-last' : ''}`}>
               <img 
                 src={bowl.image} 
                 alt={bowl.name} 
@@ -399,32 +451,32 @@ const testimonials = [
               <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/15 to-transparent pointer-events-none"></div>
             </div>
             
-            <!-- Text container -->
-            <div class="md:col-span-6 space-y-6 flex flex-col justify-center">
+            <!-- Text container: tighter space-y and smaller margins -->
+            <div class="md:col-span-6 space-y-4 md:space-y-5 flex flex-col justify-center">
               <div>
-                <span class="text-xs font-bold text-brand-gold-dark uppercase tracking-wider block mb-1">Especialidad</span>
-                <h3 class="font-serif text-3xl font-bold text-gray-950">{bowl.name}</h3>
-                <span class="text-xl font-extrabold text-[#6e4e37] block mt-2">Bs. {bowl.prices.mediano} - {bowl.prices.grande}</span>
+                <span class="text-[10px] sm:text-xs font-bold text-brand-gold-dark uppercase tracking-wider block mb-0.5">Especialidad</span>
+                <h3 class="font-serif text-2xl sm:text-3xl font-bold text-gray-950 leading-tight">{bowl.name}</h3>
+                <span class="text-lg sm:text-xl font-extrabold text-[#6e4e37] block mt-1.5">Bs. {bowl.prices.mediano} - {bowl.prices.grande}</span>
               </div>
               
-              <p class="text-sm text-gray-500 leading-relaxed">
+              <p class="text-xs sm:text-sm text-gray-500 leading-relaxed">
                 {bowl.description}
               </p>
               
-              <div class="border-t border-gray-100 pt-4 space-y-2 text-xs">
+              <div class="border-t border-gray-100 pt-3 space-y-1.5 text-xs">
                 <div class="flex items-start gap-2 text-gray-600">
-                  <strong class="w-24 shrink-0 text-brand-dark">Carbohidrato:</strong>
+                  <strong class="w-24 shrink-0 text-brand-dark font-bold">Carbohidrato:</strong>
                   <span>{bowl.carb}</span>
                 </div>
                 <div class="flex items-start gap-2 text-gray-600">
-                  <strong class="w-24 shrink-0 text-brand-dark">Vegetales:</strong>
+                  <strong class="w-24 shrink-0 text-brand-dark font-bold">Vegetales:</strong>
                   <span>{bowl.veg}</span>
                 </div>
               </div>
 
               <button 
                 type="button" 
-                class="open-modal-btn w-fit bg-[#6e4e37] hover:bg-[#573d2b] text-white text-center px-8 py-3.5 rounded-full font-bold uppercase tracking-wider text-xs transition-all shadow-sm cursor-pointer"
+                class="open-modal-btn w-fit bg-[#6e4e37] hover:bg-[#573d2b] text-white text-center px-6 py-3 md:px-8 md:py-3.5 rounded-full font-bold uppercase tracking-wider text-xs transition-all shadow-sm cursor-pointer hover:-translate-y-0.5"
                 data-bowl-id={bowl.id}
                 data-bowl-name={bowl.name}
                 data-bowl-prices={JSON.stringify(bowl.prices)}
@@ -455,24 +507,24 @@ const testimonials = [
         </p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 gap-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-7 gap-3 sm:gap-4">
         {carbohydrates.map((carb) => (
-          <div class="flex flex-col rounded-3xl overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300">
-            <div class="h-40 overflow-hidden relative">
+          <div class="flex flex-col rounded-2xl sm:rounded-3xl overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300">
+            <div class="h-28 sm:h-40 overflow-hidden relative">
               <img 
                 src={carb.image} 
                 alt={carb.name} 
                 class="w-full h-full object-cover"
               />
             </div>
-            <div class="p-4 flex-grow flex flex-col justify-between space-y-2">
+            <div class="p-3 sm:p-4 flex-grow flex flex-col justify-between space-y-1.5">
               <div>
-                <h3 class="font-bold text-gray-800 text-sm">{carb.name}</h3>
-                <span class="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full mt-1 bg-brand-gold/10 text-brand-gold-dark">
+                <h3 class="font-bold text-gray-800 text-xs sm:text-sm">{carb.name}</h3>
+                <span class="inline-block text-[9px] sm:text-[10px] font-semibold px-2 py-0.5 rounded-full mt-1 bg-brand-gold/10 text-brand-gold-dark">
                   {carb.benefit}
                 </span>
               </div>
-              <p class="text-gray-500 text-[11px] leading-relaxed">
+              <p class="text-gray-500 text-[10px] sm:text-[11px] leading-relaxed">
                 {carb.description}
               </p>
             </div>
@@ -646,26 +698,53 @@ const testimonials = [
 
 
   <!-- Section: CTA Office/Delivery -->
-  <section class="py-20 bg-brand-dark text-white relative overflow-hidden">
-    <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-brand-gold/15 rounded-full filter blur-3xl"></div>
-    
+  <section class="relative py-24 bg-cover bg-center text-white overflow-hidden" style="background-image: url('/cta_delivery_bg.png');">
+    <!-- Dark glassmorphic layer for absolute premium contrast and readability -->
+    <div class="absolute inset-0 bg-brand-dark/85 backdrop-blur-xs pointer-events-none"></div>
+    <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-brand-gold/10 rounded-full filter blur-3xl pointer-events-none"></div>
+
     <div class="max-w-4xl mx-auto px-4 text-center space-y-8 relative z-10">
-      <span class="text-4xl">🏢 🛵 🥗</span>
+      <!-- Premium SVG Icons (No Emojis) -->
+      <div class="flex justify-center items-center gap-4 sm:gap-6 text-brand-gold">
+        <!-- Icon 1: Home/Building (Where you are) -->
+        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/10 flex items-center justify-center backdrop-blur-md border border-white/10 shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sm:w-7 sm:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          </svg>
+        </div>
+        <!-- Icon 2: Location/Transit (Delivery) -->
+        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/10 flex items-center justify-center backdrop-blur-md border border-white/10 shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sm:w-7 sm:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </div>
+        <!-- Icon 3: Salad Bowl/Freshness -->
+        <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/10 flex items-center justify-center backdrop-blur-md border border-white/10 shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sm:w-7 sm:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-11.314l.707.707m11.314 11.314l.707-.707M12 5a7 7 0 100 14 7 7 0 000-14z" />
+          </svg>
+        </div>
+      </div>
+
       <h2 class="font-serif text-3xl md:text-5xl font-extrabold leading-tight">
-        ¿Llevar almuerzos saludables a tu oficina?
+        ¿Lo llevamos hasta ti?
       </h2>
-      <p class="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed">
-        Escríbenos para organizar planes corporativos semanales o mensuales. Entregamos bowls frescos y balanceados para todo tu equipo de trabajo.
+      
+      <p class="text-gray-200 max-w-2xl mx-auto text-base md:text-lg leading-relaxed font-medium">
+        Ya sea a tu oficina, casa o cualquier otro lugar donde te encuentres. Escríbenos para organizar planes semanales o mensuales. Entregamos bowls frescos, balanceados y listos para disfrutar para ti o todo tu equipo.
       </p>
       
       <div class="flex justify-center pt-4">
         <a 
-          href={`${baseWhatsappLink}?text=Hola!%20Me%20interesa%20un%20plan%20corporativo%20de%20comida%20saludable%20para%20mi%20oficina%20con%20Montalvo%20Catering.`} 
+          href={`${baseWhatsappLink}?text=Hola!%20Me%20interesa%20un%20plan%20de%20comida%20saludable%20a%20domicilio%2Foficina%20con%20Montalvo%20Catering.`} 
           target="_blank" 
           class="bg-brand-gold hover:bg-brand-gold-dark text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-xs transition-all shadow-md hover:-translate-y-0.5 inline-flex items-center gap-2"
         >
           Consultar por WhatsApp
-          <span>➔</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
         </a>
       </div>
     </div>
@@ -743,7 +822,7 @@ const testimonials = [
           <!-- Size Selection -->
           <div class="space-y-3">
             <label class="block text-xs font-bold uppercase tracking-wider text-gray-500">1. Elige el Tamaño</label>
-            <div class="grid grid-cols-2 gap-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <label class="relative flex items-center justify-between p-4 rounded-xl border border-gray-200 hover:border-brand-gold bg-white cursor-pointer group transition-all">
                 <input type="radio" name="modal-size" value="mediano" class="modal-size-radio absolute opacity-0" checked />
                 <div class="flex flex-col">
@@ -790,7 +869,7 @@ const testimonials = [
         <!-- Tab Content: Nutrition -->
         <div id="modal-tab-content-nutrition" class="hidden space-y-6">
           <!-- Macros grid -->
-          <div class="grid grid-cols-4 gap-2 text-center">
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
             <div class="bg-brand-light p-3 rounded-2xl border border-gray-100">
               <span class="block text-[10px] uppercase text-gray-400 font-bold">Calorías</span>
               <span id="modal-nutr-kcal" class="block text-xs font-extrabold text-brand-dark mt-1">200 kcal</span>
@@ -832,7 +911,7 @@ const testimonials = [
           <!-- Daily percentage values -->
           <div class="space-y-3">
             <h4 class="text-xs font-bold uppercase tracking-wider text-gray-500">¿Cuánto Aporte Diario Te Da?</h4>
-            <div class="grid grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <!-- Male percentages -->
               <div class="bg-gray-50 p-3 rounded-2xl border border-gray-100 text-[11px] space-y-2">
                 <span class="block font-bold text-gray-700 text-center border-b border-gray-200/80 pb-1">Hombre (70 kg)</span>
@@ -1234,6 +1313,72 @@ const testimonials = [
 
   // Init
   updatePlansUI();
+
+  // Mobile Menu Logic
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileBtn && mobileMenu) {
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  }
+
+  // Nosotros Carousel mobile slider logic
+  const nosotrosCarousel = document.getElementById('nosotros-carousel');
+  const nosotrosDots = document.querySelectorAll('.nosotros-carousel-dot');
+  
+  if (nosotrosCarousel && nosotrosDots.length > 0) {
+    nosotrosCarousel.addEventListener('scroll', () => {
+      const scrollLeft = nosotrosCarousel.scrollLeft;
+      const width = nosotrosCarousel.clientWidth;
+      const children = Array.from(nosotrosCarousel.children);
+      let activeIndex = 0;
+      let minDistance = Infinity;
+      
+      children.forEach((child, index) => {
+        const childCenter = child.offsetLeft + child.getBoundingClientRect().width / 2;
+        const containerCenter = scrollLeft + width / 2;
+        const distance = Math.abs(childCenter - containerCenter);
+        if (distance < minDistance) {
+          minDistance = distance;
+          activeIndex = index;
+        }
+      });
+      
+      nosotrosDots.forEach((dot, index) => {
+        if (index === activeIndex) {
+          dot.classList.remove('bg-gray-300');
+          dot.classList.add('bg-brand-gold');
+        } else {
+          dot.classList.remove('bg-brand-gold');
+          dot.classList.add('bg-gray-300');
+        }
+      });
+    });
+    
+    nosotrosDots.forEach(dot => {
+      dot.addEventListener('click', (e) => {
+        const index = parseInt(e.currentTarget.dataset.index);
+        const children = Array.from(nosotrosCarousel.children);
+        if (children[index]) {
+          const slide = children[index];
+          const left = slide.offsetLeft - (nosotrosCarousel.clientWidth - slide.getBoundingClientRect().width) / 2;
+          nosotrosCarousel.scrollTo({
+            left: left,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  }
 
   // Force scroll to top on load/refresh (disabling scroll restoration)
   if (window.history && 'scrollRestoration' in window.history) {
