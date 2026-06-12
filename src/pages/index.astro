@@ -808,11 +808,17 @@ const testimonials = [
 
       <!-- Tabs Selector -->
       <div class="flex border-b border-gray-100 bg-brand-light/30">
-        <button id="modal-tab-btn-customize" type="button" class="flex-1 py-3 text-xs font-bold uppercase tracking-wider border-b-2 border-brand-gold text-brand-gold-dark transition-all cursor-pointer">
-          Personalizar 🥗
+        <button id="modal-tab-btn-customize" type="button" class="flex-1 py-3 text-xs font-bold uppercase tracking-wider border-b-2 border-brand-gold text-brand-gold-dark transition-all cursor-pointer flex items-center justify-center gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+          </svg>
+          Personalizar
         </button>
-        <button id="modal-tab-btn-nutrition" type="button" class="flex-1 py-3 text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-gray-500 hover:text-brand-dark transition-all cursor-pointer">
-          Nutrición 📊
+        <button id="modal-tab-btn-nutrition" type="button" class="flex-1 py-3 text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-gray-500 hover:text-brand-dark transition-all cursor-pointer flex items-center justify-center gap-1.5">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
+          Nutrición
         </button>
       </div>
 
@@ -827,17 +833,31 @@ const testimonials = [
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <label class="relative flex items-center justify-between p-4 rounded-xl border border-gray-200 hover:border-brand-gold bg-white cursor-pointer group transition-all">
                 <input type="radio" name="modal-size" value="mediano" class="modal-size-radio absolute opacity-0" checked />
-                <div class="flex flex-col">
-                  <span class="font-bold text-sm text-gray-700">Mediano</span>
-                  <span class="text-xs text-gray-400">~400g de balance</span>
+                <div class="flex items-center gap-3">
+                  <div class="size-check-icon w-5 h-5 rounded-full border border-brand-gold bg-brand-gold text-white flex items-center justify-center transition-all opacity-0 scale-75 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="font-bold text-sm text-gray-700">Mediano</span>
+                    <span class="text-xs text-gray-400">~400g de balance</span>
+                  </div>
                 </div>
                 <span id="modal-price-mediano-badge" class="font-bold text-brand-gold-dark text-sm">Bs. 24</span>
               </label>
               <label class="relative flex items-center justify-between p-4 rounded-xl border border-gray-200 hover:border-brand-gold bg-white cursor-pointer group transition-all">
                 <input type="radio" name="modal-size" value="grande" class="modal-size-radio absolute opacity-0" />
-                <div class="flex flex-col">
-                  <span class="font-bold text-sm text-gray-700">Grande</span>
-                  <span class="text-xs text-gray-400">~650g de rendimiento</span>
+                <div class="flex items-center gap-3">
+                  <div class="size-check-icon w-5 h-5 rounded-full border border-brand-gold bg-brand-gold text-white flex items-center justify-center transition-all opacity-0 scale-75 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="font-bold text-sm text-gray-700">Grande</span>
+                    <span class="text-xs text-gray-400">~650g de rendimiento</span>
+                  </div>
                 </div>
                 <span id="modal-price-grande-badge" class="font-bold text-brand-gold-dark text-sm">Bs. 37</span>
               </label>
@@ -942,7 +962,10 @@ const testimonials = [
           <span id="modal-total-price" class="text-2xl font-extrabold text-brand-dark">Bs. 24</span>
         </div>
         <a id="modal-whatsapp-btn" href="#" target="_blank" class="flex-grow max-w-[200px] bg-brand-gold hover:bg-brand-gold-dark text-white text-center py-3.5 rounded-xl font-bold uppercase tracking-wider text-xs transition-all shadow-md flex items-center justify-center gap-1.5 pointer-events-none opacity-50">
-          Pedir por WhatsApp 📲
+          Pedir por WhatsApp
+          <svg class="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.488 1.449 5.407 1.451 5.428.002 9.85-4.417 9.854-9.848.002-2.63-1.023-5.102-2.886-6.968-1.863-1.865-4.336-2.89-6.97-2.891-5.438 0-9.863 4.419-9.867 9.852-.001 1.936.506 3.826 1.47 5.485L2.518 21.75l4.129-1.082zm10.277-3.887c-.22-.11-1.299-.641-1.501-.714-.201-.073-.349-.11-.497.11-.148.22-.572.714-.701.86-.128.147-.257.165-.477.055-.22-.11-.929-.342-1.769-1.092-.653-.583-1.094-1.303-1.222-1.522-.128-.22-.014-.339.096-.448.099-.099.22-.257.33-.385.11-.128.147-.22.22-.366.073-.147.037-.275-.018-.385-.055-.11-.497-1.199-.681-1.643-.18-.433-.377-.374-.518-.381-.133-.007-.286-.008-.438-.008-.153 0-.401.057-.611.286-.21.229-.802.784-.802 1.91 0 1.127.82 2.217.933 2.37.113.153 1.613 2.463 3.908 3.45.546.235.972.375 1.304.481.548.174 1.047.15 1.442.09.44-.066 1.299-.53 1.48-1.041.18-.511.18-.95.126-1.041-.054-.09-.202-.147-.422-.257z"/>
+          </svg>
         </a>
       </div>
     </div>
@@ -1109,14 +1132,9 @@ const testimonials = [
 
     // Reset size radio selection
     document.querySelectorAll('.modal-size-radio').forEach(radio => {
-      if (radio.value === 'mediano') {
-        radio.checked = true;
-        radio.parentElement.classList.add('border-brand-gold', 'bg-brand-light/60');
-      } else {
-        radio.checked = false;
-        radio.parentElement.classList.remove('border-brand-gold', 'bg-brand-light/60');
-      }
+      radio.checked = (radio.value === 'mediano');
     });
+    updateModalPriceHighlight();
 
     // Populate protein options
     if (modalProteinContainer) {
@@ -1124,9 +1142,6 @@ const testimonials = [
       proteins.forEach((prot, index) => {
         const label = document.createElement('label');
         label.className = 'relative flex items-center justify-between p-3.5 rounded-xl border border-gray-200 hover:border-brand-gold bg-white cursor-pointer transition-all';
-        if (index === 0) {
-          label.classList.add('border-brand-gold', 'bg-brand-light/60');
-        }
         
         const input = document.createElement('input');
         input.type = 'radio';
@@ -1136,27 +1151,35 @@ const testimonials = [
         if (index === 0) input.checked = true;
         
         input.addEventListener('change', (e) => {
-          document.querySelectorAll('input[name="modal-protein"]').forEach(inp => {
-            inp.parentElement.classList.remove('border-brand-gold', 'bg-brand-light/60');
-          });
-          e.target.parentElement.classList.add('border-brand-gold', 'bg-brand-light/60');
           currentBowlData.selectedProtein = e.target.value;
+          updateProteinSelectionUI();
           updateModalWhatsappLink();
         });
+
+        const leftContainer = document.createElement('div');
+        leftContainer.className = 'flex items-center gap-3';
+
+        const checkIcon = document.createElement('div');
+        checkIcon.className = 'protein-check-icon w-5 h-5 rounded-full border border-brand-gold bg-brand-gold text-white flex items-center justify-center transition-all opacity-0 scale-75 shrink-0';
+        checkIcon.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        `;
 
         const spanText = document.createElement('span');
         spanText.className = 'font-bold text-sm text-gray-700';
         spanText.textContent = prot;
 
-        const check = document.createElement('span');
-        check.className = 'text-brand-gold font-bold';
-        check.textContent = '✓';
+        leftContainer.appendChild(checkIcon);
+        leftContainer.appendChild(spanText);
 
         label.appendChild(input);
-        label.appendChild(spanText);
-        label.appendChild(check);
+        label.appendChild(leftContainer);
         modalProteinContainer.appendChild(label);
       });
+      
+      updateProteinSelectionUI();
     }
 
     // Set fixed values
@@ -1265,10 +1288,44 @@ const testimonials = [
     if (modalTotalPrice) modalTotalPrice.textContent = `Bs. ${price}`;
 
     document.querySelectorAll('.modal-size-radio').forEach(radio => {
+      const parent = radio.parentElement;
+      const checkIcon = parent.querySelector('.size-check-icon');
       if (radio.checked) {
-        radio.parentElement.classList.add('border-brand-gold', 'bg-brand-light/60');
+        parent.classList.remove('border-gray-200', 'bg-white');
+        parent.classList.add('border-brand-gold', 'bg-[#FAF6F0]', 'ring-2', 'ring-brand-gold/20');
+        if (checkIcon) {
+          checkIcon.classList.remove('opacity-0', 'scale-75');
+          checkIcon.classList.add('opacity-100', 'scale-100');
+        }
       } else {
-        radio.parentElement.classList.remove('border-brand-gold', 'bg-brand-light/60');
+        parent.classList.remove('border-brand-gold', 'bg-[#FAF6F0]', 'ring-2', 'ring-brand-gold/20');
+        parent.classList.add('border-gray-200', 'bg-white');
+        if (checkIcon) {
+          checkIcon.classList.remove('opacity-100', 'scale-100');
+          checkIcon.classList.add('opacity-0', 'scale-75');
+        }
+      }
+    });
+  }
+
+  function updateProteinSelectionUI() {
+    document.querySelectorAll('.modal-protein-radio').forEach(radio => {
+      const parent = radio.parentElement;
+      const checkIcon = parent.querySelector('.protein-check-icon');
+      if (radio.checked) {
+        parent.classList.remove('border-gray-200', 'bg-white');
+        parent.classList.add('border-brand-gold', 'bg-[#FAF6F0]', 'ring-2', 'ring-brand-gold/20');
+        if (checkIcon) {
+          checkIcon.classList.remove('opacity-0', 'scale-75');
+          checkIcon.classList.add('opacity-100', 'scale-100');
+        }
+      } else {
+        parent.classList.remove('border-brand-gold', 'bg-[#FAF6F0]', 'ring-2', 'ring-brand-gold/20');
+        parent.classList.add('border-gray-200', 'bg-white');
+        if (checkIcon) {
+          checkIcon.classList.remove('opacity-100', 'scale-100');
+          checkIcon.classList.add('opacity-0', 'scale-75');
+        }
       }
     });
   }
