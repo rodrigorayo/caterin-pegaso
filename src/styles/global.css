@@ -1,1 +1,55 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: 'Outfit', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-cursive: 'Alex Brush', cursive;
+
+  --color-brand-dark: #1e1912;
+  --color-brand-gold: #c5a059;
+  --color-brand-gold-light: #dfc28d;
+  --color-brand-gold-dark: #917237;
+  --color-brand-light: #faf7f2;
+  --color-brand-accent: #c5a059;
+  --color-brand-accent-hover: #917237;
+}
+
+/* Custom scrollbar and smooth behaviors */
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: var(--color-brand-gold-light);
+  color: var(--color-brand-dark);
+}
+
+/* Smooth floating animations */
+@keyframes float-salad {
+  0%, 100% {
+    transform: translateY(0) rotate(3deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(0deg);
+  }
+}
+
+.animate-float-salad {
+  animation: float-salad 6s ease-in-out infinite;
+}
+
+/* Subtle fade in keyframe for page elements */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}

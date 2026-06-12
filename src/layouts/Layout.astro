@@ -17,15 +17,15 @@ const { title } = Astro.props;
 		<title>{title}</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 	</head>
-	<body class="bg-white text-gray-800 font-sans antialiased selection:bg-green-200 selection:text-green-900">
+	<body class="bg-white text-gray-800 font-sans antialiased selection:bg-amber-100 selection:text-amber-900">
 		<slot />
 	</body>
 </html>
 
 <style is:global>
 	:root {
-		font-family: 'Inter', sans-serif;
+		font-family: 'Outfit', sans-serif;
 	}
 </style>

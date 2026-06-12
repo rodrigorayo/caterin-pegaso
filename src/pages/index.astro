@@ -1,163 +1,1243 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const whatsappNumber = "59100000000";
-const whatsappLink = `https://wa.me/${whatsappNumber}?text=Hola,%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20sus%20planes%20saludables.`;
+const whatsappNumber = "59172227461";
+const baseWhatsappLink = `https://wa.me/${whatsappNumber}`;
 
-const plans = [
-	{
-		name: "Plan Detox Semanal",
-		description: "5 días de comidas ligeras para limpiar tu organismo.",
-		price: "Bs. 250",
-		features: ["Almuerzo y Cena", "Jugos Detox", "Sin azúcares"]
-	},
-	{
-		name: "Plan Fitness Pro",
-		description: "Alto en proteínas para ganancia muscular.",
-		price: "Bs. 320",
-		features: ["Desayuno, Almuerzo, Cena", "Snacks proteicos", "Macros calculados"]
-	},
-	{
-		name: "Plan Keto",
-		description: "Bajo en carbohidratos, alto en grasas saludables.",
-		price: "Bs. 280",
-		features: ["Almuerzo y Cena", "Sin harinas", "Postres Keto"]
-	}
+// 7 Carbohydrates with local & Unsplash images
+const carbohydrates = [
+  {
+    name: "Trigo Pelado",
+    benefit: "Fibra & Minerales",
+    description: "Grano entero tradicional de cocción perfecta, ideal para ensaladas frescas y platos calientes.",
+    image: "/media__1781205198374.jpg"
+  },
+  {
+    name: "Quinua Real",
+    benefit: "Proteína completa",
+    description: "Superalimento andino que provee energía constante y un perfil proteico inigualable.",
+    image: "/media__1781205198378.jpg"
+  },
+  {
+    name: "Garbanzos Seleccionados",
+    benefit: "Proteína vegetal",
+    description: "Cremosos y cocidos en su punto exacto, ricos en hierro y fibra para saciedad.",
+    image: "/media__1781205198383.jpg"
+  },
+  {
+    name: "Lentejas Orgánicas",
+    benefit: "Hierro & Proteínas",
+    description: "Deliciosa fuente de hierro y fibra, ideal para complementar tu plato balanceado.",
+    image: "/media__1781205788707.jpg"
+  },
+  {
+    name: "Porotos Negros",
+    benefit: "Antioxidantes & Energía",
+    description: "Granos negros tiernos cargados de antioxidantes naturales y carbohidratos de absorción lenta.",
+    image: "/media__1781205788695.jpg"
+  },
+  {
+    name: "Arroz Blanco Premium",
+    benefit: "Energía inmediata",
+    description: "Arroz blanco de textura suelta y ligera, ideal para recargas rápidas de energía.",
+    image: "/media__1781205821782.jpg"
+  },
+  {
+    name: "Mote de Maíz",
+    benefit: "Energía & Tradición",
+    description: "Maíz blanco gigante cocido a la perfección, un carbohidrato tradicional rico en fibra y energía natural.",
+    image: "/media__1781215880738.jpg"
+  }
+];
+
+// Predefined Bowls
+const bowls = [
+  {
+    id: "salteado",
+    name: "Bowl Salteado",
+    description: "Una deliciosa combinación caliente de quinua real salteada al wok con vegetales frescos de temporada seleccionados.",
+    image: "/media__1781218272418.jpg",
+    prices: { mediano: 24, grande: 37 },
+    proteins: ["Pollo a la Plancha", "Albóndigas de Carne (Air Fryer)", "Huevos Hervidos"],
+    carb: "Quinua Real Orgánica",
+    veg: "Vegetales Salteados al Wok (Zanahoria, Pimentón, Zapallito)",
+    nutrition: {
+      kcal: 350,
+      protein: "28g",
+      carbs: "35-40g",
+      fiber: "6g",
+      fat: "6g",
+      vitamins: "B, C, E + Hierro y Magnesio",
+      ingredients: [
+        { name: "Quinua Real Orgánica", weight: "60 g" },
+        { name: "Zanahoria en tiras (wok)", weight: "30 g" },
+        { name: "Pimentón", weight: "30 g" },
+        { name: "Zapallito italiano", weight: "30 g" },
+        { name: "Cebollín / Verdeo", weight: "10 g" },
+        { name: "Aceite de sésamo/oliva", weight: "5 g" },
+        { name: "Pollo a la plancha", weight: "70 g" }
+      ],
+      dailyPct: {
+        male: [
+          { name: "Energía", val: "14%" },
+          { name: "Proteína", val: "35-50%" },
+          { name: "Fibra", val: "16-20%" },
+          { name: "Vitamina B", val: "35%" },
+          { name: "Hierro", val: "30%" },
+          { name: "Magnesio", val: "40%" }
+        ],
+        female: [
+          { name: "Energía", val: "17-19%" },
+          { name: "Proteína", val: "45-65%" },
+          { name: "Fibra", val: "22-26%" },
+          { name: "Vitamina B", val: "45%" },
+          { name: "Hierro", val: "40%" },
+          { name: "Magnesio", val: "50%" }
+        ]
+      }
+    }
+  },
+  {
+    id: "fresco",
+    name: "Bowl Fresco",
+    description: "Opción refrescante y ligera basada en trigo pelado cocido a la perfección, mezclado con hojas verdes y vegetales crujientes.",
+    image: "/media__1781218276794.jpg",
+    prices: { mediano: 24, grande: 37 },
+    proteins: ["Pollo a la Plancha", "Albóndigas de Carne (Air Fryer)", "Huevos Hervidos"],
+    carb: "Trigo Pelado de Primera",
+    veg: "Mix de Hojas Verdes (Lechuga Orgánica, Espinaca), Pepinillo y Tomate",
+    nutrition: {
+      kcal: 200,
+      protein: "25g",
+      carbs: "18-22g",
+      fiber: "4.5g",
+      fat: "4g",
+      vitamins: "A, C, K + Antioxidantes",
+      ingredients: [
+        { name: "Lechuga agroecológica", weight: "40 g" },
+        { name: "Apio agroecológico", weight: "35 g" },
+        { name: "Pepino agroecológico", weight: "35 g" },
+        { name: "Tomate agroecológico", weight: "40 g" },
+        { name: "Zanahoria agroecológica", weight: "30 g" },
+        { name: "Hierba buena agroecológica", weight: "10 g" },
+        { name: "Mote (maíz)", weight: "35 g" },
+        { name: "Pollo a la plancha", weight: "70 g" }
+      ],
+      dailyPct: {
+        male: [
+          { name: "Energía", val: "8%" },
+          { name: "Proteína", val: "30-45%" },
+          { name: "Fibra", val: "12-15%" },
+          { name: "Vitamina A", val: "42%" },
+          { name: "Vitamina C", val: "28%" },
+          { name: "Vitamina K", val: "92%" }
+        ],
+        female: [
+          { name: "Energía", val: "10-12%" },
+          { name: "Proteína", val: "38-57%" },
+          { name: "Fibra", val: "16-18%" },
+          { name: "Vitamina A", val: "54%" },
+          { name: "Vitamina C", val: "33%" },
+          { name: "Vitamina K", val: "122%" }
+        ]
+      }
+    }
+  }
+];
+
+
+
+// Team members
+const team = [
+  {
+    name: "Dra. Valeria Salas",
+    role: "Nutricionista Clínica",
+    specialty: "Diseño de Menús & Rendimiento",
+    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=80",
+    bio: "Especialista en balance metabólico y planes personalizados para el día a día en la oficina."
+  },
+  {
+    name: "Chef Rodrigo Rayo",
+    role: "Chef Ejecutivo",
+    specialty: "Alta Cocina Saludable",
+    image: "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=500&q=80",
+    bio: "Apasionado por transformar ingredientes naturales y saludables en platos de sabor excepcional."
+  },
+  {
+    name: "Mariana Vega",
+    role: "Coordinadora de Calidad",
+    specialty: "Logística de Entregas",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=500&q=80",
+    bio: "Garantiza que cada bowl y almuerzo llegue fresco, caliente y punctual hasta tu escritorio."
+  }
+];
+
+// Testimonials
+const testimonials = [
+  {
+    name: "Andrea Miranda",
+    role: "Directora de Marketing",
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
+    quote: "Pedir el plan mensual a la oficina ha cambiado mi salud. La comida llega caliente, fresca y los carbohidratos de calidad me mantienen con energía toda la tarde sin pesadez.",
+    stars: 5
+  },
+  {
+    name: "Carlos Mendoza",
+    role: "Desarrollador de Software",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
+    quote: "La opción de armar mi propio bowl me encanta. Puedo elegir quinoa con pollo y camote según mis macros del día. La entrega es súper puntual.",
+    stars: 5
+  },
+  {
+    name: "Gabriela Ortíz",
+    role: "Emprendedora",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80",
+    quote: "El plan Pro Fit en tamaño grande es perfecto para mis entrenamientos. Sabores deliciosos, cero aburridos y muy limpio.",
+    stars: 5
+  }
 ];
 ---
 
-<Layout title="Caterin - Comida Saludable Dark Kitchen">
-	<!-- Header -->
-	<header class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-green-100 transition-all duration-300">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="flex justify-between items-center h-20">
-				<div class="flex items-center gap-2">
-					<div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-xl">C</div>
-					<span class="font-bold text-2xl text-green-800 tracking-tight">Caterin</span>
-				</div>
-				<nav class="hidden md:flex gap-8 text-green-900 font-medium">
-					<a href="#hero" class="hover:text-green-600 transition-colors">Inicio</a>
-					<a href="#como-funciona" class="hover:text-green-600 transition-colors">Cómo Funciona</a>
-					<a href="#planes" class="hover:text-green-600 transition-colors">Nuestros Planes</a>
-				</nav>
-				<a href={whatsappLink} target="_blank" class="bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-					Pedir Ahora
-				</a>
-			</div>
-		</div>
-	</header>
+<Layout title="Montalvo Catering - Comida Saludable Directo a tu Oficina">
+  <!-- Header / Navigation -->
+  <header class="fixed w-full bg-white/85 backdrop-blur-lg z-50 border-b border-brand-light transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-24">
+        <!-- Logo (Vector-accurate CSS replica of user's uploaded logo - enlarged) -->
+        <a href="#hero" class="flex items-center gap-4 group">
+          <div class="w-20 h-20 rounded-full bg-white border border-brand-gold flex flex-col items-center justify-center shadow-sm relative overflow-hidden px-2 shrink-0 group-hover:scale-102 transition-transform">
+            <span class="font-cursive text-brand-dark text-2xl leading-none pt-2">Montalvo</span>
+            <div class="w-14 h-[1px] bg-gradient-to-r from-transparent via-brand-gold to-transparent my-1"></div>
+            <span class="font-sans text-[7px] tracking-[0.25em] text-brand-dark font-extrabold leading-none uppercase">Catering</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-serif font-extrabold text-2xl text-brand-dark tracking-tight leading-none">Montalvo</span>
+            <span class="font-sans text-[11px] tracking-[0.3em] text-brand-gold font-bold uppercase mt-1">Catering</span>
+          </div>
+        </a>
+        
+        <!-- Desktop Nav -->
+        <nav class="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-gray-600">
+          <a href="#hero" class="hover:text-brand-gold transition-colors">Inicio</a>
+          <a href="#nosotros" class="hover:text-brand-gold transition-colors">Nosotros</a>
+          <a href="#nuestros-bowls" class="hover:text-brand-gold transition-colors">Nuestros Bowls</a>
+          <a href="#carbs" class="hover:text-brand-gold transition-colors">Carbohidratos</a>
+          <a href="#planes" class="hover:text-brand-gold transition-colors">Nuestros Planes</a>
+          <a href="#equipo" class="hover:text-brand-gold transition-colors">Nuestro Equipo</a>
+        </nav>
 
-	<!-- Hero Section -->
-	<section id="hero" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-green-50">
-		<!-- Decoración de fondo -->
-		<div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-green-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
-		<div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-green-300 rounded-full mix-blend-multiply filter blur-3xl opacity-50"></div>
+        <!-- CTA Header -->
+        <div class="flex items-center gap-4">
+          <a href={`${baseWhatsappLink}?text=Hola!%20Me%20gustaría%20saber%20más%20sobre%20sus%20servicios%20de%20Montalvo%20Catering.`} target="_blank" class="bg-brand-gold hover:bg-brand-gold-dark text-white px-6 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5">
+            Pedir Ahora
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
 
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-			<span class="inline-block py-1 px-3 rounded-full bg-green-100 text-green-800 font-semibold text-sm mb-6 border border-green-200">🥗 100% Fresco y Natural</span>
-			<h1 class="text-5xl md:text-7xl font-extrabold text-green-950 mb-8 tracking-tight leading-tight">
-				Comida saludable, <br/>
-				<span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-400">directo a tu puerta</span>
-			</h1>
-			<p class="text-lg md:text-xl text-green-800 mb-10 max-w-2xl mx-auto leading-relaxed">
-				Somos tu Dark Kitchen especializada en planes nutricionales. Preparamos comidas deliciosas, equilibradas y diseñadas para alcanzar tus metas.
-			</p>
-			<div class="flex flex-col sm:flex-row gap-4 justify-center">
-				<a href="#planes" class="bg-white text-green-700 border-2 border-green-600 hover:bg-green-50 px-8 py-4 rounded-full font-bold text-lg transition-all shadow-sm">
-					Ver Planes
-				</a>
-				<a href={whatsappLink} target="_blank" class="bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-full font-bold text-lg transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 flex items-center justify-center gap-2">
-					Hablar por WhatsApp
-					<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-				</a>
-			</div>
-		</div>
-	</section>
+  <!-- Hero Section -->
+  <!-- Hero Section -->
+  <section id="hero" class="relative pt-44 pb-24 md:pt-56 md:pb-36 bg-cover bg-no-repeat overflow-hidden" style="background-image: url('/media__1781217634034.jpg'); background-position: center top;">
+    <!-- Subtle soft shadow layer underneath text card for absolute contrast -->
+    <div class="absolute inset-y-0 left-0 w-full lg:w-1/2 bg-gradient-to-r from-brand-light/20 to-transparent pointer-events-none"></div>
 
-	<!-- Cómo Funciona -->
-	<section id="como-funciona" class="py-24 bg-white">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="text-center mb-16">
-				<h2 class="text-3xl md:text-4xl font-bold text-green-900 mb-4">¿Cómo funciona?</h2>
-				<p class="text-green-700 max-w-2xl mx-auto text-lg">Tu comida saludable en 3 simples pasos, sin complicaciones.</p>
-			</div>
+    <!-- Decorative Floating Leaves and Shapes -->
+    <div class="absolute top-20 left-10 text-3xl animate-bounce duration-1000 opacity-20 select-none z-10">🍃</div>
+    <div class="absolute bottom-20 right-10 text-4xl animate-pulse opacity-20 select-none z-10">🌿</div>
+    <div class="absolute -right-20 top-0 w-[500px] h-[500px] bg-brand-gold/5 rounded-full filter blur-3xl pointer-events-none z-10"></div>
 
-			<div class="grid md:grid-cols-3 gap-12">
-				<div class="text-center p-6 rounded-2xl bg-green-50 border border-green-100 hover:shadow-lg transition-shadow">
-					<div class="w-16 h-16 mx-auto bg-green-600 text-white rounded-2xl flex items-center justify-center text-2xl font-bold mb-6 rotate-3">1</div>
-					<h3 class="text-xl font-bold text-green-900 mb-3">Elige tu plan</h3>
-					<p class="text-green-700">Selecciona el plan que mejor se adapte a tus objetivos (Detox, Keto, Fitness).</p>
-				</div>
-				<div class="text-center p-6 rounded-2xl bg-green-50 border border-green-100 hover:shadow-lg transition-shadow">
-					<div class="w-16 h-16 mx-auto bg-green-600 text-white rounded-2xl flex items-center justify-center text-2xl font-bold mb-6 -rotate-3">2</div>
-					<h3 class="text-xl font-bold text-green-900 mb-3">Cocinamos para ti</h3>
-					<p class="text-green-700">Nuestros chefs preparan tus comidas diariamente con ingredientes frescos.</p>
-				</div>
-				<div class="text-center p-6 rounded-2xl bg-green-50 border border-green-100 hover:shadow-lg transition-shadow">
-					<div class="w-16 h-16 mx-auto bg-green-600 text-white rounded-2xl flex items-center justify-center text-2xl font-bold mb-6 rotate-3">3</div>
-					<h3 class="text-xl font-bold text-green-900 mb-3">Recibe y disfruta</h3>
-					<p class="text-green-700">Entregamos tus comidas directamente en tu puerta. Solo calienta y disfruta.</p>
-				</div>
-			</div>
-		</div>
-	</section>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <!-- Text Content fully aligned to the far left -->
+        <div class="lg:col-span-8 space-y-8 text-left lg:-ml-12 xl:-ml-24">
+          
+          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-dark leading-tight">
+            Comida Sana Para <br class="hidden sm:inline" />
+            <span class="text-brand-gold relative inline-block">
+              Una Vida Feliz
+              <svg class="absolute left-0 bottom-0 w-full h-2 text-brand-gold-light/45 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0,7 C30,2 70,2 100,7 L100,10 L0,10 Z" fill="currentColor"></path></svg>
+            </span>
+          </h1>
 
-	<!-- Planes Section -->
-	<section id="planes" class="py-24 bg-green-900 text-white relative">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-			<div class="text-center mb-16">
-				<h2 class="text-3xl md:text-5xl font-bold mb-6">Nuestros Planes</h2>
-				<p class="text-green-100 max-w-2xl mx-auto text-lg">Planes diseñados por nutricionistas y preparados por chefs. Empieza a cuidarte hoy mismo.</p>
-			</div>
+          <p class="text-base sm:text-lg text-gray-700 max-w-xl mx-auto lg:mx-0 leading-relaxed font-sans font-medium">
+            Montalvo Catering es tu cocina saludable de confianza. Preparamos menús nutricionales premium diarios y te los llevamos directo a tu trabajo o casa para que comas rico, balanceado y sin complicaciones.
+          </p>
 
-			<div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-				{plans.map((plan) => (
-					<div class="bg-white text-green-900 rounded-3xl p-8 shadow-2xl flex flex-col transform transition hover:-translate-y-2 hover:shadow-green-900/50">
-						<h3 class="text-2xl font-bold mb-2">{plan.name}</h3>
-						<p class="text-green-700 mb-6 flex-grow">{plan.description}</p>
-						<div class="mb-6">
-							<span class="text-4xl font-extrabold">{plan.price}</span>
-							<span class="text-green-600 font-medium text-sm">/semana</span>
-						</div>
-						<ul class="mb-8 space-y-3">
-							{plan.features.map((feature) => (
-								<li class="flex items-center text-green-800 font-medium">
-									<svg class="w-5 h-5 mr-3 text-green-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-									{feature}
-								</li>
-							))}
-						</ul>
-						<a href={whatsappLink} target="_blank" class="w-full bg-green-600 hover:bg-green-700 text-white text-center py-4 rounded-xl font-bold transition-colors text-lg mt-auto shadow-md">
-							Comprar Plan
-						</a>
-					</div>
-				))}
-			</div>
-		</div>
-	</section>
+          <div class="flex justify-center lg:justify-start">
+            <a href="#planes" class="bg-brand-gold hover:bg-brand-gold-dark text-white font-bold uppercase tracking-wider text-xs px-8 py-4 rounded-full transition-all shadow-md hover:-translate-y-0.5 text-center inline-block">
+              Explorar Planes
+            </a>
+          </div>
 
-	<!-- CTA Final -->
-	<section class="py-20 bg-green-50">
-		<div class="max-w-4xl mx-auto px-4 text-center">
-			<h2 class="text-3xl font-bold text-green-900 mb-6">¿Tienes requisitos dietéticos especiales?</h2>
-			<p class="text-green-700 mb-8 text-lg">Escríbenos y nuestro equipo de nutrición adaptará el menú exactamente a lo que necesitas.</p>
-			<a href={whatsappLink} target="_blank" class="inline-block bg-white text-green-700 border-2 border-green-600 hover:bg-green-100 px-8 py-3 rounded-full font-bold text-lg transition-all shadow-sm">
-				Consultar por WhatsApp
-			</a>
-		</div>
-	</section>
+          <!-- Feature Flat Columns (No border, no backgrounds, minimal elegant styling, stacked vertically) -->
+          <div class="flex flex-col gap-6 pt-4">
+            <div class="flex items-start gap-4 text-left">
+              <div class="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-brand-dark text-sm">Directo a tu Oficina</h4>
+                <p class="text-xs text-gray-500 mt-1 leading-relaxed">Llegamos antes del almuerzo para que comas fresco y en tu horario.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 text-left">
+              <div class="w-12 h-12 rounded-xl bg-brand-gold-light/20 flex items-center justify-center text-brand-gold-dark shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="font-bold text-brand-dark text-sm">Nutrición Calculada</h4>
+                <p class="text-xs text-gray-500 mt-1 leading-relaxed">Carbohidratos complejos, grasas buenas y proteínas de alta calidad.</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-	<!-- Footer -->
-	<footer class="bg-white border-t border-green-100 py-12">
-		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-			<div class="flex items-center gap-2">
-				<div class="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold">C</div>
-				<span class="font-bold text-xl text-green-800">Caterin</span>
-			</div>
-			<p class="text-green-700 text-sm">© {new Date().getFullYear()} Caterin Dark Kitchen. Todos los derechos reservados.</p>
-			<div class="flex gap-4">
-				<a href={whatsappLink} target="_blank" class="text-green-600 hover:text-green-800 font-medium">Contactar por WhatsApp</a>
-			</div>
-		</div>
-	</footer>
+        <!-- Right side spacer: Shows the beautiful food plates layout of the background image -->
+        <div class="lg:col-span-4 h-24 lg:h-auto pointer-events-none"></div>
+      </div>
+    </div>
+  </section>
+  <!-- Section: Collage - Kitchen Details (Sobre Montalvo Catering) -->
+  <section id="nosotros" class="py-24 bg-[#f4ebe1] border-y border-brand-light">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <!-- Collage of images (Left) -->
+        <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+          <div class="space-y-4">
+            <div class="rounded-3xl overflow-hidden shadow-md transform hover:scale-102 transition-transform duration-300 relative group">
+              <img src="/media__1781224279688.jpg" alt="Plato saludable" class="w-full object-cover h-64" />
+              <div class="absolute inset-0 bg-black/20 flex items-end p-4 opacity-90 transition-opacity">
+                <span class="text-white font-bold text-sm tracking-wide bg-brand-dark/40 px-3 py-1.5 rounded-full backdrop-blur-xs">Plato saludable</span>
+              </div>
+            </div>
+            <div class="rounded-3xl overflow-hidden shadow-md transform hover:scale-102 transition-transform duration-300 relative group">
+              <img src="/media__1781224281635.jpg" alt="Preparación saludable" class="w-full object-cover h-44" />
+              <div class="absolute inset-0 bg-black/20 flex items-end p-4 opacity-90 transition-opacity">
+                <span class="text-white font-bold text-sm tracking-wide bg-brand-dark/40 px-3 py-1.5 rounded-full backdrop-blur-xs">Preparación saludable</span>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-4 pt-8">
+            <div class="rounded-3xl overflow-hidden shadow-md transform hover:scale-102 transition-transform duration-300 relative group">
+              <img src="/media__1781224283556.jpg" alt="Ingredientes frescos" class="w-full object-cover h-44" />
+              <div class="absolute inset-0 bg-black/20 flex items-end p-4 opacity-90 transition-opacity">
+                <span class="text-white font-bold text-sm tracking-wide bg-brand-dark/40 px-3 py-1.5 rounded-full backdrop-blur-xs">Ingredientes frescos</span>
+              </div>
+            </div>
+            <div class="rounded-3xl overflow-hidden shadow-md transform hover:scale-102 transition-transform duration-300 relative group">
+              <img src="/media__1781224285406.jpg" alt="Ensaladas de catering" class="w-full object-cover h-64" />
+              <div class="absolute inset-0 bg-black/20 flex items-end p-4 opacity-90 transition-opacity">
+                <span class="text-white font-bold text-sm tracking-wide bg-brand-dark/40 px-3 py-1.5 rounded-full backdrop-blur-xs">Ensaladas de catering</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Text details (Right) -->
+        <div class="lg:col-span-6 space-y-6">
+          <span class="font-cursive text-brand-dark text-3xl block">Sobre Montalvo Catering</span>
+          <h2 class="font-serif text-3xl md:text-5xl font-extrabold text-brand-dark leading-tight">
+            Cocinamos con Pasión para Cuidar tu Día a Día
+          </h2>
+          <p class="text-gray-700 leading-relaxed font-semibold">
+            Nuestra cocina opera bajo un concepto de nutrición inteligente premium. Creemos que comer sano no tiene que ser monótono ni requerir que pases horas cocinando. 
+          </p>
+          <p class="text-gray-600 leading-relaxed text-sm">
+            Diseñamos planes equilibrados con el balance exacto de macronutrientes que necesitas. Cocinamos frescos todos los días utilizando ingredientes orgánicos locales y despachamos en empaques sustentables listos para servir o calentar.
+          </p>
+          <p class="text-gray-600 leading-relaxed text-sm">
+            Llevamos <strong>más de 15 años de experiencia</strong> acompañando almuerzos y eventos en <strong>Cochabamba (CBBA - BO)</strong>. Todas nuestras verduras son ecológicas y agroecológicas, y la carne que utilizamos es de la mejor calidad seleccionada del mercado.
+          </p>
+          <div class="flex items-center gap-6 pt-4">
+            <div class="text-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 min-w-[120px]">
+              <span class="block text-3xl font-extrabold text-brand-gold">100%</span>
+              <span class="text-xs text-gray-500 font-semibold uppercase">Fresco</span>
+            </div>
+            <div class="text-center p-4 bg-white rounded-2xl shadow-sm border border-gray-100 min-w-[120px]">
+              <span class="block text-3xl font-extrabold text-brand-gold-dark">0%</span>
+              <span class="text-xs text-gray-500 font-semibold uppercase">Azúcar Añadido</span>
+            </div>
+          </div>
+          <div class="pt-4">
+            <a href="#planes" class="inline-block bg-[#6e4e37] hover:bg-[#573d2b] text-white text-xs font-bold uppercase tracking-wider px-8 py-4 rounded-full transition-all shadow-md hover:-translate-y-0.5">
+              Ver Planes Nutritivos
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Nuestros Bowls Insignia -->
+  <section id="nuestros-bowls" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <span class="font-cursive text-brand-gold text-3xl block">Nuestras especialidades</span>
+        <h2 class="font-serif text-3xl md:text-5xl font-extrabold text-brand-dark">
+          Elige Uno de Nuestros Bowls
+        </h2>
+        <p class="text-gray-600">
+          Bowls balanceados, diseñados por nuestra nutricionista y ejecutados a la perfección. Selecciona tu favorito para personalizar su tamaño y proteína en un popup instantáneo.
+        </p>
+      </div>
+
+      <div class="space-y-12 max-w-5xl mx-auto">
+        {bowls.map((bowl, index) => (
+          <div class="grid md:grid-cols-12 gap-8 items-center bg-brand-light/35 p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300">
+            <!-- Image container: Optimized for square images with titles -->
+            <div class={`md:col-span-6 aspect-square max-h-[380px] md:max-h-none md:h-[400px] rounded-3xl overflow-hidden relative shadow-xs border border-gray-100/50 ${index % 2 === 1 ? 'md:order-last' : ''}`}>
+              <img 
+                src={bowl.image} 
+                alt={bowl.name} 
+                class="w-full h-full object-cover transform hover:scale-103 transition-transform duration-700"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/15 to-transparent pointer-events-none"></div>
+            </div>
+            
+            <!-- Text container -->
+            <div class="md:col-span-6 space-y-6 flex flex-col justify-center">
+              <div>
+                <span class="text-xs font-bold text-brand-gold-dark uppercase tracking-wider block mb-1">Especialidad</span>
+                <h3 class="font-serif text-3xl font-bold text-gray-950">{bowl.name}</h3>
+                <span class="text-xl font-extrabold text-[#6e4e37] block mt-2">Bs. {bowl.prices.mediano} - {bowl.prices.grande}</span>
+              </div>
+              
+              <p class="text-sm text-gray-500 leading-relaxed">
+                {bowl.description}
+              </p>
+              
+              <div class="border-t border-gray-100 pt-4 space-y-2 text-xs">
+                <div class="flex items-start gap-2 text-gray-600">
+                  <strong class="w-24 shrink-0 text-brand-dark">Carbohidrato:</strong>
+                  <span>{bowl.carb}</span>
+                </div>
+                <div class="flex items-start gap-2 text-gray-600">
+                  <strong class="w-24 shrink-0 text-brand-dark">Vegetales:</strong>
+                  <span>{bowl.veg}</span>
+                </div>
+              </div>
+
+              <button 
+                type="button" 
+                class="open-modal-btn w-fit bg-[#6e4e37] hover:bg-[#573d2b] text-white text-center px-8 py-3.5 rounded-full font-bold uppercase tracking-wider text-xs transition-all shadow-sm cursor-pointer"
+                data-bowl-id={bowl.id}
+                data-bowl-name={bowl.name}
+                data-bowl-prices={JSON.stringify(bowl.prices)}
+                data-bowl-proteins={JSON.stringify(bowl.proteins)}
+                data-bowl-carb={bowl.carb}
+                data-bowl-veg={bowl.veg}
+                data-bowl-nutrition={JSON.stringify(bowl.nutrition)}
+              >
+                Pedir Bowl
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Carbohydrates -->
+  <section id="carbs" class="py-24 bg-brand-light/30 border-y border-brand-light">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <span class="font-cursive text-brand-gold text-3xl block">Combustible limpio</span>
+        <h2 class="font-serif text-3xl md:text-5xl font-extrabold text-brand-dark">
+          Nuestros 7 Carbohidratos Complejos
+        </h2>
+        <p class="text-gray-600">
+          En Montalvo Catering seleccionamos carbohidratos de absorción lenta y bajo índice glucémico. Esto garantiza que tu cuerpo reciba energía limpia y prolongada, evitando picos de insulina y fatiga por la tarde.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 gap-4">
+        {carbohydrates.map((carb) => (
+          <div class="flex flex-col rounded-3xl overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300">
+            <div class="h-40 overflow-hidden relative">
+              <img 
+                src={carb.image} 
+                alt={carb.name} 
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div class="p-4 flex-grow flex flex-col justify-between space-y-2">
+              <div>
+                <h3 class="font-bold text-gray-800 text-sm">{carb.name}</h3>
+                <span class="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full mt-1 bg-brand-gold/10 text-brand-gold-dark">
+                  {carb.benefit}
+                </span>
+              </div>
+              <p class="text-gray-500 text-[11px] leading-relaxed">
+                {carb.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- Section: Main Plan (Interactive) -->
+  <section id="planes" class="py-24 bg-brand-light relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <span class="font-cursive text-brand-gold text-3xl block">Planes Nutricionales</span>
+        <h2 class="font-serif text-3xl md:text-5xl font-extrabold text-brand-dark">
+          Plan de Alimentación
+        </h2>
+        <p class="text-gray-600">
+          Selecciona el tamaño y frecuencia idóneos para recibir tu comida saludable directamente en tu oficina o casa.
+        </p>
+
+        <!-- Toggle Selectors -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8">
+          <!-- Tamaño Selector -->
+          <div class="bg-white p-1.5 rounded-full shadow-sm border border-gray-200 flex">
+            <button 
+              type="button" 
+              class="size-toggle-btn px-6 py-2 rounded-full text-sm font-bold transition-all bg-brand-gold text-white" 
+              data-size="mediano"
+            >
+              Mediano (~400g)
+            </button>
+            <button 
+              type="button" 
+              class="size-toggle-btn px-6 py-2 rounded-full text-sm font-semibold transition-all text-gray-600 hover:text-brand-gold" 
+              data-size="grande"
+            >
+              Grande (~650g)
+            </button>
+          </div>
+
+          <!-- Frecuencia Selector -->
+          <div class="bg-white p-1.5 rounded-full shadow-sm border border-gray-200 flex">
+            <button 
+              type="button" 
+              class="freq-toggle-btn px-5 py-2 rounded-full text-sm font-semibold transition-all text-gray-600 hover:text-brand-gold" 
+              data-freq="diario"
+            >
+              Diario
+            </button>
+            <button 
+              type="button" 
+              class="freq-toggle-btn px-5 py-2 rounded-full text-sm font-bold transition-all bg-brand-gold text-white" 
+              data-freq="semanal"
+            >
+              Semanal (5d)
+            </button>
+            <button 
+              type="button" 
+              class="freq-toggle-btn px-5 py-2 rounded-full text-sm font-semibold transition-all text-gray-600 hover:text-brand-gold" 
+              data-freq="mensual"
+            >
+              Mensual (20d)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Plan Cards Grid -->
+      <div class="max-w-md mx-auto items-stretch">
+        <!-- Plan 1: Balance Vital -->
+        <div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 flex flex-col transform transition hover:-translate-y-1 hover:shadow-2xl">
+          <div class="inline-block px-3 py-1 bg-brand-gold/10 text-brand-gold-dark text-xs font-bold rounded-full w-fit mb-4 uppercase">
+            Nutrición Premium
+          </div>
+          <h3 class="font-serif text-3xl font-bold text-gray-900 mb-2">Plan Montalvo</h3>
+          <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+            Ideal para mantener tu día con energía constante. Aporta carbohidratos complejos balanceados, grasas buenas y proteína magra en proporciones equilibradas.
+          </p>
+
+          <div class="mb-8 border-y border-gray-100 py-6">
+            <div class="flex items-baseline gap-2">
+              <span id="price-balance" class="text-5xl font-extrabold text-brand-dark">Bs. 140</span>
+              <span id="period-balance" class="text-gray-500 font-semibold text-sm">/semana</span>
+            </div>
+            <p id="desc-balance" class="text-xs text-gray-400 mt-2 font-medium">Tamaño Mediano, Entregado de Lunes a Viernes</p>
+          </div>
+
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-center text-sm font-semibold text-gray-700">
+              <span class="w-5 h-5 rounded-full bg-brand-gold/20 text-brand-gold-dark flex items-center justify-center text-xs mr-3">✓</span>
+              Almuerzo Completo y Balanceado
+            </li>
+            <li class="flex items-center text-sm font-semibold text-gray-700">
+              <span class="w-5 h-5 rounded-full bg-brand-gold/20 text-brand-gold-dark flex items-center justify-center text-xs mr-3">✓</span>
+              Enfoque en carbohidratos de digestión lenta
+            </li>
+            <li class="flex items-center text-sm font-semibold text-gray-700">
+              <span class="w-5 h-5 rounded-full bg-brand-gold/20 text-brand-gold-dark flex items-center justify-center text-xs mr-3">✓</span>
+              Delivery directo a tu oficina o casa
+            </li>
+            <li class="flex items-center text-sm font-semibold text-gray-700">
+              <span class="w-5 h-5 rounded-full bg-brand-gold/20 text-brand-gold-dark flex items-center justify-center text-xs mr-3">✓</span>
+              Nutrición calculada por especialistas
+            </li>
+          </ul>
+
+          <a 
+            id="btn-buy-balance"
+            href="#" 
+            target="_blank" 
+            class="w-full bg-brand-gold hover:bg-brand-gold-dark text-white text-center py-4 rounded-xl font-bold uppercase tracking-wider text-xs transition-all shadow-sm"
+          >
+            Suscribirme al Plan
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Nuestro Equipo (Work Team) -->
+  <section id="equipo" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <span class="font-cursive text-brand-gold text-3xl block">Pasión y Cocina</span>
+        <h2 class="font-serif text-3xl md:text-5xl font-extrabold text-brand-dark">
+          Nuestro Equipo de Trabajo
+        </h2>
+        <p class="text-gray-600">
+          El motor humano detrás de Montalvo Catering. Diseñamos, preparamos y entregamos tus comidas diarias con amor, higiene rigurosa y la máxima dedicación.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-12 items-center max-w-5xl mx-auto">
+        <!-- Landscape Image and Info (Left/First Column) -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="rounded-3xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 relative group">
+            <img 
+              src="/media__1781223402188.jpg" 
+              alt="Equipo de Trabajo Montalvo Catering" 
+              class="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-500"
+            />
+          </div>
+          <div class="bg-brand-light/35 p-6 sm:p-8 rounded-3xl border border-brand-light/80">
+            <p class="text-sm text-gray-600 leading-relaxed">
+              En <strong>Montalvo Catering</strong> preparamos todos tus almuerzos con un equipo calificado que asegura los más altos estándares de higiene, frescura y sabor. Cocinamos con pasión y profesionalidad para acompañar tu día a día con la mejor propuesta gastronómica saludable de Cochabamba.
+            </p>
+          </div>
+        </div>
+
+        <!-- Portrait Image (Right/Second Column) -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="rounded-3xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300 relative group">
+            <img 
+              src="/media__1781223402955.jpg" 
+              alt="Muro y Fachada de Montalvo Catering con el Equipo" 
+              class="w-full h-auto object-cover transform group-hover:scale-[1.01] transition-transform duration-500"
+            />
+          </div>
+          <div class="text-center pt-2">
+            <span class="font-cursive text-brand-gold text-2xl">Nutriendo cuerpos y mentes en cada momento</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Section: CTA Office/Delivery -->
+  <section class="py-20 bg-brand-dark text-white relative overflow-hidden">
+    <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-brand-gold/15 rounded-full filter blur-3xl"></div>
+    
+    <div class="max-w-4xl mx-auto px-4 text-center space-y-8 relative z-10">
+      <span class="text-4xl">🏢 🛵 🥗</span>
+      <h2 class="font-serif text-3xl md:text-5xl font-extrabold leading-tight">
+        ¿Llevar almuerzos saludables a tu oficina?
+      </h2>
+      <p class="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed">
+        Escríbenos para organizar planes corporativos semanales o mensuales. Entregamos bowls frescos y balanceados para todo tu equipo de trabajo.
+      </p>
+      
+      <div class="flex justify-center pt-4">
+        <a 
+          href={`${baseWhatsappLink}?text=Hola!%20Me%20interesa%20un%20plan%20corporativo%20de%20comida%20saludable%20para%20mi%20oficina%20con%20Montalvo%20Catering.`} 
+          target="_blank" 
+          class="bg-brand-gold hover:bg-brand-gold-dark text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-xs transition-all shadow-md hover:-translate-y-0.5 inline-flex items-center gap-2"
+        >
+          Consultar por WhatsApp
+          <span>➔</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-100 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-14 h-14 rounded-full bg-white border border-brand-gold flex flex-col items-center justify-center shadow-sm relative overflow-hidden px-1 shrink-0">
+          <span class="font-cursive text-brand-dark text-base leading-none pt-1">Montalvo</span>
+          <div class="w-10 h-[0.5px] bg-brand-gold my-0.5"></div>
+          <span class="font-sans text-[5px] tracking-[0.2em] text-brand-dark font-extrabold leading-none uppercase">Catering</span>
+        </div>
+        <span class="font-serif font-bold text-xl text-brand-dark">Montalvo Catering</span>
+      </a>
+      
+      <!-- Instagram and Phone Info -->
+      <div class="flex flex-col md:flex-row items-center gap-6 text-xs text-gray-500 font-medium">
+        <a 
+          href="https://instagram.com/montalvo_catering" 
+          target="_blank" 
+          class="hover:text-brand-gold-dark transition-colors flex items-center gap-1.5"
+        >
+          <span>📸</span> @montalvo_catering
+        </a>
+        <a 
+          href={`${baseWhatsappLink}?text=Hola!%20Me%20interesa%20consultar%20sobre%20los%20planes%20de%20almuerzos.`} 
+          target="_blank" 
+          class="hover:text-brand-gold-dark transition-colors flex items-center gap-1.5 font-bold text-brand-dark"
+        >
+          <span>📲</span> Consulta nuestros planes: 72227461
+        </a>
+      </div>
+
+      <p class="text-gray-400 text-xs font-medium">
+        © {new Date().getFullYear()} Montalvo Catering. Todos los derechos reservados.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Popup Modal for Custom Bowl Orders -->
+  <div id="order-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden opacity-0 transition-opacity duration-300">
+    <!-- Backdrop -->
+    <div id="modal-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-xs"></div>
+    
+    <!-- Modal Content -->
+    <div class="relative bg-white text-gray-900 rounded-3xl shadow-2xl max-w-md w-full mx-4 overflow-hidden border border-brand-light transform scale-95 transition-transform duration-300 z-10">
+      <!-- Header with background -->
+      <div class="bg-brand-light px-6 py-5 border-b border-gray-100 flex justify-between items-center">
+        <div>
+          <span class="text-xs font-bold text-brand-gold-dark uppercase tracking-wider block">Ficha & Pedido</span>
+          <h3 id="modal-bowl-title" class="font-serif text-xl font-bold text-brand-dark">Nombre del Bowl</h3>
+        </div>
+        <button id="close-modal-btn" type="button" class="text-gray-400 hover:text-brand-dark p-2 hover:bg-gray-100 rounded-full transition-colors cursor-pointer text-sm font-bold w-9 h-9 flex items-center justify-center">
+          ✕
+        </button>
+      </div>
+
+      <!-- Tabs Selector -->
+      <div class="flex border-b border-gray-100 bg-brand-light/30">
+        <button id="modal-tab-btn-customize" type="button" class="flex-1 py-3 text-xs font-bold uppercase tracking-wider border-b-2 border-brand-gold text-brand-gold-dark transition-all cursor-pointer">
+          Personalizar 🥗
+        </button>
+        <button id="modal-tab-btn-nutrition" type="button" class="flex-1 py-3 text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-gray-500 hover:text-brand-dark transition-all cursor-pointer">
+          Nutrición 📊
+        </button>
+      </div>
+
+      <!-- Body / Scroll Area -->
+      <div class="p-6 max-h-[60vh] overflow-y-auto">
+        
+        <!-- Tab Content: Customize -->
+        <div id="modal-tab-content-customize" class="space-y-6">
+          <!-- Size Selection -->
+          <div class="space-y-3">
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500">1. Elige el Tamaño</label>
+            <div class="grid grid-cols-2 gap-3">
+              <label class="relative flex items-center justify-between p-4 rounded-xl border border-gray-200 hover:border-brand-gold bg-white cursor-pointer group transition-all">
+                <input type="radio" name="modal-size" value="mediano" class="modal-size-radio absolute opacity-0" checked />
+                <div class="flex flex-col">
+                  <span class="font-bold text-sm text-gray-700">Mediano</span>
+                  <span class="text-xs text-gray-400">~400g de balance</span>
+                </div>
+                <span id="modal-price-mediano-badge" class="font-bold text-brand-gold-dark text-sm">Bs. 24</span>
+              </label>
+              <label class="relative flex items-center justify-between p-4 rounded-xl border border-gray-200 hover:border-brand-gold bg-white cursor-pointer group transition-all">
+                <input type="radio" name="modal-size" value="grande" class="modal-size-radio absolute opacity-0" />
+                <div class="flex flex-col">
+                  <span class="font-bold text-sm text-gray-700">Grande</span>
+                  <span class="text-xs text-gray-400">~650g de rendimiento</span>
+                </div>
+                <span id="modal-price-grande-badge" class="font-bold text-brand-gold-dark text-sm">Bs. 37</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Protein Selection -->
+          <div class="space-y-3">
+            <label class="block text-xs font-bold uppercase tracking-wider text-gray-500">2. Elige tu Proteína</label>
+            <div id="modal-protein-container" class="space-y-2">
+              <!-- Dynamically populated or statically styled radio options -->
+            </div>
+          </div>
+
+          <!-- Fixed Ingredients Info -->
+          <div class="bg-brand-light/40 p-4 rounded-2xl border border-brand-light/80 space-y-3">
+            <span class="block text-xs font-bold uppercase tracking-wider text-brand-gold-dark">Ingredientes Base Incluidos:</span>
+            <div class="space-y-2 text-xs text-gray-600">
+              <div class="flex items-start gap-2">
+                <strong class="text-gray-700 w-20 shrink-0">Carbohidrato:</strong>
+                <span id="modal-fixed-carb" class="text-gray-600">Quinua Real</span>
+              </div>
+              <div class="flex items-start gap-2">
+                <strong class="text-gray-700 w-20 shrink-0">Vegetales:</strong>
+                <span id="modal-fixed-veg" class="text-gray-600">Mix del Wok</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab Content: Nutrition -->
+        <div id="modal-tab-content-nutrition" class="hidden space-y-6">
+          <!-- Macros grid -->
+          <div class="grid grid-cols-4 gap-2 text-center">
+            <div class="bg-brand-light p-3 rounded-2xl border border-gray-100">
+              <span class="block text-[10px] uppercase text-gray-400 font-bold">Calorías</span>
+              <span id="modal-nutr-kcal" class="block text-xs font-extrabold text-brand-dark mt-1">200 kcal</span>
+            </div>
+            <div class="bg-brand-light p-3 rounded-2xl border border-gray-100">
+              <span class="block text-[10px] uppercase text-gray-400 font-bold">Proteínas</span>
+              <span id="modal-nutr-protein" class="block text-xs font-extrabold text-brand-dark mt-1">25g</span>
+            </div>
+            <div class="bg-brand-light p-3 rounded-2xl border border-gray-100">
+              <span class="block text-[10px] uppercase text-gray-400 font-bold">Carbos</span>
+              <span id="modal-nutr-carbs" class="block text-xs font-extrabold text-brand-dark mt-1">18-22g</span>
+            </div>
+            <div class="bg-brand-light p-3 rounded-2xl border border-gray-100">
+              <span class="block text-[10px] uppercase text-gray-400 font-bold">Grasas</span>
+              <span id="modal-nutr-fat" class="block text-xs font-extrabold text-brand-dark mt-1">4g</span>
+            </div>
+          </div>
+
+          <!-- Extra info: Fibra & Vitaminas -->
+          <div class="bg-brand-light/40 p-4 rounded-2xl border border-brand-light/80 text-xs space-y-2">
+            <div class="flex justify-between">
+              <strong class="text-gray-700">Fibra Alimentaria:</strong>
+              <span id="modal-nutr-fiber" class="text-brand-gold-dark font-bold">4.5 g</span>
+            </div>
+            <div class="flex justify-between">
+              <strong class="text-gray-700">Vitaminas Clave:</strong>
+              <span id="modal-nutr-vitamins" class="text-brand-gold-dark font-bold">A, C, K + Antiox.</span>
+            </div>
+          </div>
+
+          <!-- Recipe Ingredients list -->
+          <div class="space-y-2">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-gray-500">Ingredientes de la Receta</h4>
+            <div id="modal-nutr-ingredients-list" class="space-y-1.5 max-h-[180px] overflow-y-auto pr-1">
+              <!-- Dynamically populated ingredients -->
+            </div>
+          </div>
+
+          <!-- Daily percentage values -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-gray-500">¿Cuánto Aporte Diario Te Da?</h4>
+            <div class="grid grid-cols-2 gap-4">
+              <!-- Male percentages -->
+              <div class="bg-gray-50 p-3 rounded-2xl border border-gray-100 text-[11px] space-y-2">
+                <span class="block font-bold text-gray-700 text-center border-b border-gray-200/80 pb-1">Hombre (70 kg)</span>
+                <div id="modal-nutr-pct-male" class="space-y-1">
+                  <!-- Dynamically populated daily percentages for male -->
+                </div>
+              </div>
+              
+              <!-- Female percentages -->
+              <div class="bg-gray-50 p-3 rounded-2xl border border-gray-100 text-[11px] space-y-2">
+                <span class="block font-bold text-gray-700 text-center border-b border-gray-200/80 pb-1">Mujer (55 kg)</span>
+                <div id="modal-nutr-pct-female" class="space-y-1">
+                  <!-- Dynamically populated daily percentages for female -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Footer -->
+      <div class="p-6 border-t border-gray-100 bg-gray-50 flex items-center justify-between gap-4">
+        <div>
+          <span class="block text-[10px] uppercase text-gray-400 font-bold tracking-wider">Total a pagar:</span>
+          <span id="modal-total-price" class="text-2xl font-extrabold text-brand-dark">Bs. 24</span>
+        </div>
+        <a id="modal-whatsapp-btn" href="#" target="_blank" class="flex-grow max-w-[200px] bg-brand-gold hover:bg-brand-gold-dark text-white text-center py-3.5 rounded-xl font-bold uppercase tracking-wider text-xs transition-all shadow-md flex items-center justify-center gap-1.5 pointer-events-none opacity-50">
+          Pedir por WhatsApp 📲
+        </a>
+      </div>
+    </div>
+  </div>
 </Layout>
+
+<!-- CLIENT-SIDE SCRIPT FOR INTERACTIVE MODULES -->
+<script is:inline define:vars={{ baseWhatsappLink }}>
+  // State variables for Plans
+  let selectedSize = 'mediano';
+  let selectedFreq = 'semanal';
+
+  const planPrices = {
+    balance: {
+      mediano: { diario: 30, semanal: 140, mensual: 520 },
+      grande: { diario: 40, semanal: 190, mensual: 720 }
+    }
+  };
+
+  const planFrequenciesText = {
+    diario: '/día',
+    semanal: '/semana',
+    mensual: '/mes'
+  };
+
+  const planDescriptionsText = {
+    mediano: {
+      diario: 'Tamaño Mediano (~400g), Almuerzo diario',
+      semanal: 'Tamaño Mediano (~400g), Lunes a Viernes (5 días)',
+      mensual: 'Tamaño Mediano (~400g), 4 semanas (20 días)'
+    },
+    grande: {
+      diario: 'Tamaño Grande (~650g), Almuerzo diario',
+      semanal: 'Tamaño Grande (~650g), Lunes a Viernes (5 días)',
+      mensual: 'Tamaño Grande (~650g), 4 semanas (20 días)'
+    }
+  };
+
+  function updatePlansUI() {
+    // Pricing
+    const balancePriceVal = planPrices.balance[selectedSize][selectedFreq];
+    const suffix = planFrequenciesText[selectedFreq];
+
+    const priceBalanceEl = document.getElementById('price-balance');
+    const periodBalanceEl = document.getElementById('period-balance');
+
+    if (priceBalanceEl) priceBalanceEl.textContent = `Bs. ${balancePriceVal}`;
+    if (periodBalanceEl) periodBalanceEl.textContent = suffix;
+
+    // Descriptions
+    const descText = planDescriptionsText[selectedSize][selectedFreq];
+    const descBalanceEl = document.getElementById('desc-balance');
+
+    if (descBalanceEl) descBalanceEl.textContent = descText;
+
+    // Buy Button Links
+    const sizeTextReadable = selectedSize === 'mediano' ? 'Mediano (~400g)' : 'Grande (~650g)';
+    const freqTextReadable = selectedFreq === 'diario' ? 'Diario (1 día)' : selectedFreq === 'semanal' ? 'Semanal (5 días)' : 'Mensual (20 días)';
+    
+    const btnBuyBalanceEl = document.getElementById('btn-buy-balance');
+
+    if (btnBuyBalanceEl) {
+      btnBuyBalanceEl.href = `${baseWhatsappLink}?text=Hola!%20Me%20interesa%20suscribirme%20al%20*Plan%20Montalvo*%20%0A-%20Tamaño:%20${encodeURIComponent(sizeTextReadable)}%0A-%20Frecuencia:%20${encodeURIComponent(freqTextReadable)}%0A-%20Precio:%20Bs.%20${balancePriceVal}`;
+    }
+  }
+
+  // Setup plan toggles
+  document.querySelectorAll('.size-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      document.querySelectorAll('.size-toggle-btn').forEach(b => {
+        b.classList.remove('bg-brand-gold', 'text-white');
+        b.classList.add('text-gray-600', 'hover:text-brand-gold');
+      });
+      e.target.classList.add('bg-brand-gold', 'text-white');
+      e.target.classList.remove('text-gray-600', 'hover:text-brand-gold');
+      
+      selectedSize = e.target.dataset.size;
+      updatePlansUI();
+    });
+  });
+
+  document.querySelectorAll('.freq-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      document.querySelectorAll('.freq-toggle-btn').forEach(b => {
+        b.classList.remove('bg-brand-gold', 'text-white');
+        b.classList.add('text-gray-600', 'hover:text-brand-gold');
+      });
+      e.target.classList.add('bg-brand-gold', 'text-white');
+      e.target.classList.remove('text-gray-600', 'hover:text-brand-gold');
+
+      selectedFreq = e.target.dataset.freq;
+      updatePlansUI();
+    });
+  });
+
+
+
+  // Predefined Bowls Popup Modal State & Logic
+  let currentBowlData = {
+    id: '',
+    name: '',
+    prices: {},
+    selectedSize: 'mediano',
+    selectedProtein: '',
+    carb: '',
+    veg: ''
+  };
+
+  const orderModal = document.getElementById('order-modal');
+  const modalBowlTitle = document.getElementById('modal-bowl-title');
+  const modalProteinContainer = document.getElementById('modal-protein-container');
+  const modalFixedCarb = document.getElementById('modal-fixed-carb');
+  const modalFixedVeg = document.getElementById('modal-fixed-veg');
+  const modalTotalPrice = document.getElementById('modal-total-price');
+  const modalWhatsappBtn = document.getElementById('modal-whatsapp-btn');
+
+  // Tabs DOM elements
+  const tabBtnCustomize = document.getElementById('modal-tab-btn-customize');
+  const tabBtnNutrition = document.getElementById('modal-tab-btn-nutrition');
+  const tabContentCustomize = document.getElementById('modal-tab-content-customize');
+  const tabContentNutrition = document.getElementById('modal-tab-content-nutrition');
+
+  function switchModalTab(tab) {
+    if (tab === 'customize') {
+      tabContentCustomize?.classList.remove('hidden');
+      tabContentNutrition?.classList.add('hidden');
+
+      tabBtnCustomize?.classList.add('border-brand-gold', 'text-brand-gold-dark');
+      tabBtnCustomize?.classList.remove('border-transparent', 'text-gray-500');
+
+      tabBtnNutrition?.classList.remove('border-brand-gold', 'text-brand-gold-dark');
+      tabBtnNutrition?.classList.add('border-transparent', 'text-gray-500');
+    } else {
+      tabContentCustomize?.classList.add('hidden');
+      tabContentNutrition?.classList.remove('hidden');
+
+      tabBtnCustomize?.classList.remove('border-brand-gold', 'text-brand-gold-dark');
+      tabBtnCustomize?.classList.add('border-transparent', 'text-gray-500');
+
+      tabBtnNutrition?.classList.add('border-brand-gold', 'text-brand-gold-dark');
+      tabBtnNutrition?.classList.remove('border-transparent', 'text-gray-500');
+    }
+  }
+
+  tabBtnCustomize?.addEventListener('click', () => switchModalTab('customize'));
+  tabBtnNutrition?.addEventListener('click', () => switchModalTab('nutrition'));
+
+  function openModal(name, id, prices, proteins, carb, veg, nutrition) {
+    currentBowlData = {
+      id,
+      name,
+      prices,
+      selectedSize: 'mediano',
+      selectedProtein: proteins[0] || '',
+      carb,
+      veg
+    };
+
+    // Set title
+    if (modalBowlTitle) modalBowlTitle.textContent = name;
+    
+    // Reset to customization tab by default
+    switchModalTab('customize');
+
+    // Reset size radio selection
+    document.querySelectorAll('.modal-size-radio').forEach(radio => {
+      if (radio.value === 'mediano') {
+        radio.checked = true;
+        radio.parentElement.classList.add('border-brand-gold', 'bg-brand-light/60');
+      } else {
+        radio.checked = false;
+        radio.parentElement.classList.remove('border-brand-gold', 'bg-brand-light/60');
+      }
+    });
+
+    // Populate protein options
+    if (modalProteinContainer) {
+      modalProteinContainer.innerHTML = '';
+      proteins.forEach((prot, index) => {
+        const label = document.createElement('label');
+        label.className = 'relative flex items-center justify-between p-3.5 rounded-xl border border-gray-200 hover:border-brand-gold bg-white cursor-pointer transition-all';
+        if (index === 0) {
+          label.classList.add('border-brand-gold', 'bg-brand-light/60');
+        }
+        
+        const input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'modal-protein';
+        input.value = prot;
+        input.className = 'modal-protein-radio absolute opacity-0';
+        if (index === 0) input.checked = true;
+        
+        input.addEventListener('change', (e) => {
+          document.querySelectorAll('input[name="modal-protein"]').forEach(inp => {
+            inp.parentElement.classList.remove('border-brand-gold', 'bg-brand-light/60');
+          });
+          e.target.parentElement.classList.add('border-brand-gold', 'bg-brand-light/60');
+          currentBowlData.selectedProtein = e.target.value;
+          updateModalWhatsappLink();
+        });
+
+        const spanText = document.createElement('span');
+        spanText.className = 'font-bold text-sm text-gray-700';
+        spanText.textContent = prot;
+
+        const check = document.createElement('span');
+        check.className = 'text-brand-gold font-bold';
+        check.textContent = '✓';
+
+        label.appendChild(input);
+        label.appendChild(spanText);
+        label.appendChild(check);
+        modalProteinContainer.appendChild(label);
+      });
+    }
+
+    // Set fixed values
+    if (modalFixedCarb) modalFixedCarb.textContent = carb;
+    if (modalFixedVeg) modalFixedVeg.textContent = veg;
+
+    // Set badge prices
+    const priceMedianoBadge = document.getElementById('modal-price-mediano-badge');
+    const priceGrandeBadge = document.getElementById('modal-price-grande-badge');
+    if (priceMedianoBadge) priceMedianoBadge.textContent = `Bs. ${prices.mediano}`;
+    if (priceGrandeBadge) priceGrandeBadge.textContent = `Bs. ${prices.grande}`;
+
+    // Populate nutrition information
+    if (nutrition) {
+      const kcalEl = document.getElementById('modal-nutr-kcal');
+      const proteinEl = document.getElementById('modal-nutr-protein');
+      const carbsEl = document.getElementById('modal-nutr-carbs');
+      const fatEl = document.getElementById('modal-nutr-fat');
+      const fiberEl = document.getElementById('modal-nutr-fiber');
+      const vitaminsEl = document.getElementById('modal-nutr-vitamins');
+      const ingredientsListEl = document.getElementById('modal-nutr-ingredients-list');
+      const pctMaleEl = document.getElementById('modal-nutr-pct-male');
+      const pctFemaleEl = document.getElementById('modal-nutr-pct-female');
+
+      if (kcalEl) kcalEl.textContent = `${nutrition.kcal} kcal`;
+      if (proteinEl) proteinEl.textContent = nutrition.protein;
+      if (carbsEl) carbsEl.textContent = nutrition.carbs;
+      if (fatEl) fatEl.textContent = nutrition.fat;
+      if (fiberEl) fiberEl.textContent = nutrition.fiber;
+      if (vitaminsEl) vitaminsEl.textContent = nutrition.vitamins;
+
+      if (ingredientsListEl) {
+        ingredientsListEl.innerHTML = '';
+        if (nutrition.ingredients && Array.isArray(nutrition.ingredients)) {
+          nutrition.ingredients.forEach(ing => {
+            const div = document.createElement('div');
+            div.className = 'flex justify-between items-center text-xs py-1 border-b border-gray-100/50';
+            div.innerHTML = `
+              <span class="text-gray-600">${ing.name}</span>
+              <span class="font-bold text-gray-800">${ing.weight}</span>
+            `;
+            ingredientsListEl.appendChild(div);
+          });
+        }
+      }
+
+      if (pctMaleEl) {
+        pctMaleEl.innerHTML = '';
+        if (nutrition.dailyPct && Array.isArray(nutrition.dailyPct.male)) {
+          nutrition.dailyPct.male.forEach(pct => {
+            const div = document.createElement('div');
+            div.className = 'flex justify-between items-center text-[10px] py-0.5';
+            div.innerHTML = `
+              <span class="text-gray-500">${pct.name}:</span>
+              <span class="font-extrabold text-brand-dark">${pct.val}</span>
+            `;
+            pctMaleEl.appendChild(div);
+          });
+        }
+      }
+
+      if (pctFemaleEl) {
+        pctFemaleEl.innerHTML = '';
+        if (nutrition.dailyPct && Array.isArray(nutrition.dailyPct.female)) {
+          nutrition.dailyPct.female.forEach(pct => {
+            const div = document.createElement('div');
+            div.className = 'flex justify-between items-center text-[10px] py-0.5';
+            div.innerHTML = `
+              <span class="text-gray-500">${pct.name}:</span>
+              <span class="font-extrabold text-brand-dark">${pct.val}</span>
+            `;
+            pctFemaleEl.appendChild(div);
+          });
+        }
+      }
+    }
+
+    updateModalPriceHighlight();
+    updateModalWhatsappLink();
+
+    // Show modal
+    if (orderModal) {
+      orderModal.classList.remove('hidden');
+      orderModal.offsetHeight; // force reflow
+      orderModal.classList.remove('opacity-0');
+      orderModal.querySelector('.relative').classList.remove('scale-95');
+      orderModal.querySelector('.relative').classList.add('scale-100');
+    }
+    document.body.classList.add('overflow-hidden');
+  }
+
+  function closeModal() {
+    if (orderModal) {
+      orderModal.classList.add('opacity-0');
+      orderModal.querySelector('.relative').classList.remove('scale-100');
+      orderModal.querySelector('.relative').classList.add('scale-95');
+      setTimeout(() => {
+        orderModal.classList.add('hidden');
+      }, 300);
+    }
+    document.body.classList.remove('overflow-hidden');
+  }
+
+  function updateModalPriceHighlight() {
+    const price = currentBowlData.prices[currentBowlData.selectedSize];
+    if (modalTotalPrice) modalTotalPrice.textContent = `Bs. ${price}`;
+
+    document.querySelectorAll('.modal-size-radio').forEach(radio => {
+      if (radio.checked) {
+        radio.parentElement.classList.add('border-brand-gold', 'bg-brand-light/60');
+      } else {
+        radio.parentElement.classList.remove('border-brand-gold', 'bg-brand-light/60');
+      }
+    });
+  }
+
+  function updateModalWhatsappLink() {
+    const price = currentBowlData.prices[currentBowlData.selectedSize];
+    const sizeText = currentBowlData.selectedSize === 'mediano' ? 'Mediano' : 'Grande';
+    const message = `Hola Montalvo Catering! Quiero pedir el *${currentBowlData.name}*:\n- Tamaño: ${sizeText}\n- Proteína: ${currentBowlData.selectedProtein}\n- Carbohidrato: ${currentBowlData.carb}\n- Vegetales: ${currentBowlData.veg}\nPrecio: Bs. ${price}`;
+    
+    if (modalWhatsappBtn) {
+      modalWhatsappBtn.href = `${baseWhatsappLink}?text=${encodeURIComponent(message)}`;
+      modalWhatsappBtn.classList.remove('pointer-events-none', 'opacity-50');
+    }
+  }
+
+  // Bind Open Buttons
+  document.querySelectorAll('.open-modal-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const target = e.currentTarget;
+      const name = target.dataset.bowlName;
+      const id = target.dataset.bowlId;
+      const prices = JSON.parse(target.dataset.bowlPrices);
+      const proteins = JSON.parse(target.dataset.bowlProteins);
+      const carb = target.dataset.bowlCarb;
+      const veg = target.dataset.bowlVeg;
+      const nutrition = JSON.parse(target.dataset.bowlNutrition || '{}');
+      
+      openModal(name, id, prices, proteins, carb, veg, nutrition);
+    });
+  });
+
+  // Bind Close Button & Backdrop
+  document.getElementById('close-modal-btn')?.addEventListener('click', closeModal);
+  document.getElementById('modal-backdrop')?.addEventListener('click', closeModal);
+
+  // Bind Size Radio changes
+  document.querySelectorAll('.modal-size-radio').forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      currentBowlData.selectedSize = e.target.value;
+      updateModalPriceHighlight();
+      updateModalWhatsappLink();
+    });
+  });
+
+  // Init
+  updatePlansUI();
+
+  // Force scroll to top on load/refresh (disabling scroll restoration)
+  if (window.history && 'scrollRestoration' in window.history) {
+    window.history.scrollRestoration = 'manual';
+  }
+  window.scrollTo(0, 0);
+</script>
