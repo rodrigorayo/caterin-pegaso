@@ -2,9 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 
 const whatsappNumber = "59172227461";
-const baseWhatsappLink = `https://wa.me/${whatsappNumber}`;
+const baseWhatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}`;
 const bowlsWhatsappNumber = "59172227461";
-const bowlsWhatsappLink = `https://wa.me/${bowlsWhatsappNumber}`;
+const bowlsWhatsappLink = `https://api.whatsapp.com/send?phone=${bowlsWhatsappNumber}`;
 
 // 7 Carbohydrates with local & Unsplash images
 const carbohydrates = [
@@ -230,7 +230,7 @@ const testimonials = [
 
         <!-- CTA & Mobile Menu Toggle -->
         <div class="flex items-center gap-3 md:gap-4">
-          <a href={`${baseWhatsappLink}?text=Hola!%20Me%20gustaría%20saber%20más%20sobre%20sus%20servicios%20de%20Montalvo%20Catering.`} target="_blank" class="bg-brand-gold hover:bg-brand-gold-dark text-white px-4 py-2 md:px-6 md:py-2.5 rounded-full font-bold text-[10px] md:text-xs uppercase tracking-wider transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 whitespace-nowrap">
+          <a href={`${baseWhatsappLink}&text=Hola!%20Me%20gustaría%20saber%20más%20sobre%20sus%20servicios%20de%20Montalvo%20Catering.`} target="_blank" class="bg-brand-gold hover:bg-brand-gold-dark text-white px-4 py-2 md:px-6 md:py-2.5 rounded-full font-bold text-[10px] md:text-xs uppercase tracking-wider transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 whitespace-nowrap">
             Pedir
           </a>
           <!-- Hamburger Button -->
@@ -739,7 +739,7 @@ const testimonials = [
       
       <div class="flex justify-center pt-4">
         <a 
-          href={`${baseWhatsappLink}?text=Hola!%20Me%20interesa%20un%20plan%20de%20comida%20saludable%20a%20domicilio%2Foficina%20con%20Montalvo%20Catering.`} 
+          href={`${baseWhatsappLink}&text=Hola!%20Me%20interesa%20un%20plan%20de%20comida%20saludable%20a%20domicilio%2Foficina%20con%20Montalvo%20Catering.`} 
           target="_blank" 
           class="bg-brand-gold hover:bg-brand-gold-dark text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider text-xs transition-all shadow-md hover:-translate-y-0.5 inline-flex items-center gap-2"
         >
@@ -774,7 +774,7 @@ const testimonials = [
           <span>📸</span> @montalvo_catering
         </a>
         <a 
-          href={`${baseWhatsappLink}?text=Hola!%20Me%20interesa%20consultar%20sobre%20los%20planes%20de%20almuerzos.`} 
+          href={`${baseWhatsappLink}&text=Hola!%20Me%20interesa%20consultar%20sobre%20los%20planes%20de%20almuerzos.`} 
           target="_blank" 
           class="hover:text-brand-gold-dark transition-colors flex items-center gap-1.5 font-bold text-brand-dark"
         >
@@ -1028,7 +1028,7 @@ const testimonials = [
     const btnBuyBalanceEl = document.getElementById('btn-buy-balance');
 
     if (btnBuyBalanceEl) {
-      btnBuyBalanceEl.href = `${baseWhatsappLink}?text=Hola!%20Me%20interesa%20suscribirme%20al%20*Plan%20Montalvo*%20%0A-%20Tamaño:%20${encodeURIComponent(sizeTextReadable)}%0A-%20Frecuencia:%20${encodeURIComponent(freqTextReadable)}%0A-%20Precio:%20Bs.%20${balancePriceVal}`;
+      btnBuyBalanceEl.href = `${baseWhatsappLink}&text=Hola!%20Me%20interesa%20suscribirme%20al%20*Plan%20Montalvo*%20%0A-%20Tamaño:%20${encodeURIComponent(sizeTextReadable)}%0A-%20Frecuencia:%20${encodeURIComponent(freqTextReadable)}%0A-%20Precio:%20Bs.%20${balancePriceVal}`;
     }
   }
 
@@ -1336,7 +1336,7 @@ const testimonials = [
     const message = `Hola Montalvo Catering! Quiero pedir el *${currentBowlData.name}*:\n- Tamaño: ${sizeText}\n- Proteína: ${currentBowlData.selectedProtein}\n- Carbohidrato: ${currentBowlData.carb}\n- Vegetales: ${currentBowlData.veg}\nPrecio: Bs. ${price}`;
     
     if (modalWhatsappBtn) {
-      modalWhatsappBtn.href = `${bowlsWhatsappLink}?text=${encodeURIComponent(message)}`;
+      modalWhatsappBtn.href = `${bowlsWhatsappLink}&text=${encodeURIComponent(message)}`;
       modalWhatsappBtn.classList.remove('pointer-events-none', 'opacity-50');
     }
   }
