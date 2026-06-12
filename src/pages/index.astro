@@ -974,6 +974,9 @@ const testimonials = [
 
 <!-- CLIENT-SIDE SCRIPT FOR INTERACTIVE MODULES -->
 <script is:inline define:vars={{ baseWhatsappLink, bowlsWhatsappLink }}>
+  // Device detection for WhatsApp links (bypassing api.whatsapp.com redirect issues on desktop)
+  const isMobileDev = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
   // State variables for Plans
   let selectedSize = 'mediano';
   let selectedFreq = 'semanal';
@@ -1028,7 +1031,9 @@ const testimonials = [
     const btnBuyBalanceEl = document.getElementById('btn-buy-balance');
 
     if (btnBuyBalanceEl) {
-      btnBuyBalanceEl.href = `${baseWhatsappLink}&text=Hola!%20Me%20interesa%20suscribirme%20al%20*Plan%20Montalvo*%20%0A-%20Tamaño:%20${encodeURIComponent(sizeTextReadable)}%0A-%20Frecuencia:%20${encodeURIComponent(freqTextReadable)}%0A-%20Precio:%20Bs.%20${balancePriceVal}`;
+      const planMsg = `Hola! Me interesa suscribirme al *Plan Montalvo*\n- Tamaño: ${sizeTextReadable}\n- Frecuencia: ${freqTextReadable}\n- Precio: Bs. ${balancePriceVal}`;
+      const finalBase = isMobileDev ? baseWhatsappLink : baseWhatsappLink.replace('api.whatsapp.com/send', 'web.whatsapp.com/send');
+      btnBuyBalanceEl.href = `${finalBase}&text=${encodeURIComponent(planMsg)}`;
     }
   }
 
@@ -1336,7 +1341,8 @@ const testimonials = [
     const message = `Hola Montalvo Catering! Quiero pedir el *${currentBowlData.name}*:\n- Tamaño: ${sizeText}\n- Proteína: ${currentBowlData.selectedProtein}\n- Carbohidrato: ${currentBowlData.carb}\n- Vegetales: ${currentBowlData.veg}\nPrecio: Bs. ${price}`;
     
     if (modalWhatsappBtn) {
-      modalWhatsappBtn.href = `${bowlsWhatsappLink}&text=${encodeURIComponent(message)}`;
+      const finalBase = isMobileDev ? bowlsWhatsappLink : bowlsWhatsappLink.replace('api.whatsapp.com/send', 'web.whatsapp.com/send');
+      modalWhatsappBtn.href = `${finalBase}&text=${encodeURIComponent(message)}`;
       modalWhatsappBtn.classList.remove('pointer-events-none', 'opacity-50');
     }
   }
@@ -1436,6 +1442,13 @@ const testimonials = [
           });
         }
       });
+    });
+  }
+
+  // Rewrite static WhatsApp links for desktop users to avoid Facebook redirect errors
+  if (!isMobileDev) {
+    document.querySelectorAll('a[href*="api.whatsapp.com/send"]').forEach(link => {
+      link.href = link.href.replace('api.whatsapp.com/send', 'web.whatsapp.com/send');
     });
   }
 
