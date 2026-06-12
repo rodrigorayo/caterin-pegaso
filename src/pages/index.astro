@@ -442,7 +442,7 @@ const testimonials = [
         {bowls.map((bowl, index) => (
           <div class="grid md:grid-cols-12 gap-6 md:gap-8 items-center bg-brand-light/35 p-5 sm:p-6 md:p-8 rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300">
             <!-- Image container: Optimized height for a cleaner, compact presentation -->
-            <div class={`md:col-span-6 aspect-video md:aspect-square h-48 sm:h-64 md:h-[350px] rounded-2xl md:rounded-3xl overflow-hidden relative shadow-xs border border-gray-100/50 ${index % 2 === 1 ? 'md:order-last' : ''}`}>
+            <div class={`md:col-span-6 w-full aspect-video md:aspect-square md:h-[350px] md:w-auto rounded-2xl md:rounded-3xl overflow-hidden relative shadow-xs border border-gray-100/50 ${index % 2 === 1 ? 'md:order-last' : ''}`}>
               <img 
                 src={bowl.image} 
                 alt={bowl.name} 
