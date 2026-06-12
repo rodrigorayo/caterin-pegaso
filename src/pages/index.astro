@@ -3,6 +3,8 @@ import Layout from '../layouts/Layout.astro';
 
 const whatsappNumber = "59172227461";
 const baseWhatsappLink = `https://wa.me/${whatsappNumber}`;
+const bowlsWhatsappNumber = "59161121130";
+const bowlsWhatsappLink = `https://wa.me/${bowlsWhatsappNumber}`;
 
 // 7 Carbohydrates with local & Unsplash images
 const carbohydrates = [
@@ -948,7 +950,7 @@ const testimonials = [
 </Layout>
 
 <!-- CLIENT-SIDE SCRIPT FOR INTERACTIVE MODULES -->
-<script is:inline define:vars={{ baseWhatsappLink }}>
+<script is:inline define:vars={{ baseWhatsappLink, bowlsWhatsappLink }}>
   // State variables for Plans
   let selectedSize = 'mediano';
   let selectedFreq = 'semanal';
@@ -1277,7 +1279,7 @@ const testimonials = [
     const message = `Hola Montalvo Catering! Quiero pedir el *${currentBowlData.name}*:\n- Tamaño: ${sizeText}\n- Proteína: ${currentBowlData.selectedProtein}\n- Carbohidrato: ${currentBowlData.carb}\n- Vegetales: ${currentBowlData.veg}\nPrecio: Bs. ${price}`;
     
     if (modalWhatsappBtn) {
-      modalWhatsappBtn.href = `${baseWhatsappLink}?text=${encodeURIComponent(message)}`;
+      modalWhatsappBtn.href = `${bowlsWhatsappLink}?text=${encodeURIComponent(message)}`;
       modalWhatsappBtn.classList.remove('pointer-events-none', 'opacity-50');
     }
   }
