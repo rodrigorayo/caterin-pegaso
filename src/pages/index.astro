@@ -109,7 +109,7 @@ const bowls = [
     prices: { mediano: 24, grande: 37 },
     proteins: ["Pollo a la Plancha", "Albóndigas de Carne (Air Fryer)", "Huevos Hervidos"],
     carbLabel: "Carbohidrato del día",
-    carb: "depende según el menú semanal",
+    carb: "(Depende según el menú semanal)",
     vegLabel: "Ensalada fresca",
     veg: "Lechuga, zanahoria, tomate, apio y pepino con hierbabuena",
     nutrition: {
@@ -642,7 +642,7 @@ const testimonials = [
           </div>
           <h3 id="plan-title" class="font-serif text-3xl font-bold text-gray-900 mb-2">Plan Semanal</h3>
           <p id="desc-plan-detail" class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
-            Consta de 5 bowls que puede consumir durante el periodo de hasta 2 semanas, los días de consumo son a elección del cliente.
+            Consta de <strong>5 bowls</strong> que puede consumir durante el periodo de <strong>hasta 2 semanas</strong> para <strong>1 persona</strong>, los días de consumo son a elección del cliente.
           </p>
 
           <div class="mb-8 border-y border-gray-100 py-6">
@@ -1037,20 +1037,20 @@ const testimonials = [
 
   const planDescriptionsMain = {
     diario: {
-      individual: 'Consta de 1 bowl que se pide con un día de anticipación o el mismo día de consumo.',
-      grupal: 'Consta de 1 bowl que se pide con un día de anticipación o el mismo día de consumo.'
+      individual: 'Consta de <strong>1 bowl</strong> que se pide con un día de anticipación o el mismo día de consumo.',
+      grupal: 'Consta de <strong>1 bowl</strong> que se pide con un día de anticipación o el mismo día de consumo.'
     },
     flexible: {
-      individual: 'Consta de 3 bowls que puede consumir durante el periodo de hasta 2 semanas para 1 persona, los días de consumo son a elección del cliente.',
-      grupal: 'Consta de 3 bowls que puede consumir durante el periodo de hasta 2 semanas en grupo (aplica desde 3 personas), los días de consumo son a elección del cliente.'
+      individual: 'Consta de <strong>3 bowls</strong> que puede consumir durante el periodo de <strong>hasta 2 semanas</strong> para <strong>1 persona</strong>, los días de consumo son a elección del cliente.',
+      grupal: 'Consta de <strong>3 bowls</strong> que puede consumir durante el periodo de <strong>hasta 2 semanas</strong> en grupo (aplica desde <strong>3 personas</strong>), los días de consumo son a elección del cliente.'
     },
     semanal: {
-      individual: 'Consta de 5 bowls que puede consumir durante el periodo de hasta 2 semanas para 1 persona, los días de consumo son a elección del cliente.',
-      grupal: 'Consta de 5 bowls que puede consumir durante el periodo de hasta 2 semanas en grupo (aplica desde 3 personas), los días de consumo son a elección del cliente.'
+      individual: 'Consta de <strong>5 bowls</strong> que puede consumir durante el periodo de <strong>hasta 2 semanas</strong> para <strong>1 persona</strong>, los días de consumo son a elección del cliente.',
+      grupal: 'Consta de <strong>5 bowls</strong> que puede consumir durante el periodo de <strong>hasta 2 semanas</strong> en grupo (aplica desde <strong>3 personas</strong>), los días de consumo son a elección del cliente.'
     },
     mensual: {
-      individual: 'Consta de 20 bowls que puede consumir durante el periodo de hasta 6 semanas para 1 persona, los días de consumo son a elección del cliente.',
-      grupal: 'Consta de 20 bowls que puede consumir durante el periodo de hasta 6 semanas en grupo (aplica desde 3 personas), los días de consumo son a elección del cliente.'
+      individual: 'Consta de <strong>20 bowls</strong> que puede consumir durante el periodo de <strong>hasta 6 semanas</strong> para <strong>1 persona</strong>, los días de consumo son a elección del cliente.',
+      grupal: 'Consta de <strong>20 bowls</strong> que puede consumir durante el periodo de <strong>hasta 6 semanas</strong> en grupo (aplica desde <strong>3 personas</strong>), los días de consumo son a elección del cliente.'
     }
   };
 
@@ -1180,7 +1180,7 @@ const testimonials = [
 
     // Main Description
     const descPlanDetailEl = document.getElementById('desc-plan-detail');
-    if (descPlanDetailEl) descPlanDetailEl.textContent = planDescriptionsMain[selectedFreq][selectedOption];
+    if (descPlanDetailEl) descPlanDetailEl.innerHTML = planDescriptionsMain[selectedFreq][selectedOption];
 
     // Badge
     const planBadgeEl = document.getElementById('plan-badge');
