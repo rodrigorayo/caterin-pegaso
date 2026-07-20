@@ -61,8 +61,10 @@ const bowls = [
     image: "/media__1781218272418.jpg",
     prices: { mediano: 24, grande: 37 },
     proteins: ["Pollo a la Plancha", "Albóndigas de Carne (Air Fryer)", "Huevos Hervidos"],
-    carb: "Quinua Real Orgánica",
-    veg: "Vegetales Salteados al Wok (Zanahoria, Pimentón, Zapallito)",
+    carbLabel: "Carbohidrato",
+    carb: "Quinua con sofrito de cebolla y pimentón.",
+    vegLabel: "Vegetales salteados",
+    veg: "Cebolla, pimentón, calabacín y zanahoria.",
     nutrition: {
       kcal: 350,
       protein: "28g",
@@ -106,8 +108,10 @@ const bowls = [
     image: "/media__1781218276794.jpg",
     prices: { mediano: 24, grande: 37 },
     proteins: ["Pollo a la Plancha", "Albóndigas de Carne (Air Fryer)", "Huevos Hervidos"],
-    carb: "Trigo Pelado de Primera",
-    veg: "Mix de Hojas Verdes (Lechuga Orgánica, Espinaca), Pepinillo y Tomate",
+    carbLabel: "Carbohidrato del día",
+    carb: "depende según el menú semanal",
+    vegLabel: "Ensalada fresca",
+    veg: "Lechuga, zanahoria, tomate, apio y pepino con hierbabuena",
     nutrition: {
       kcal: 200,
       protein: "25g",
@@ -467,11 +471,11 @@ const testimonials = [
               
               <div class="border-t border-gray-100 pt-3 space-y-1.5 text-xs">
                 <div class="flex items-start gap-2 text-gray-600">
-                  <strong class="w-24 shrink-0 text-brand-dark font-bold">Carbohidrato:</strong>
+                  <strong class="w-32 shrink-0 text-brand-dark font-bold">{bowl.carbLabel}:</strong>
                   <span>{bowl.carb}</span>
                 </div>
                 <div class="flex items-start gap-2 text-gray-600">
-                  <strong class="w-24 shrink-0 text-brand-dark font-bold">Vegetales:</strong>
+                  <strong class="w-32 shrink-0 text-brand-dark font-bold">{bowl.vegLabel}:</strong>
                   <span>{bowl.veg}</span>
                 </div>
               </div>
@@ -483,7 +487,9 @@ const testimonials = [
                 data-bowl-name={bowl.name}
                 data-bowl-prices={JSON.stringify(bowl.prices)}
                 data-bowl-proteins={JSON.stringify(bowl.proteins)}
+                data-bowl-carb-label={bowl.carbLabel}
                 data-bowl-carb={bowl.carb}
+                data-bowl-veg-label={bowl.vegLabel}
                 data-bowl-veg={bowl.veg}
                 data-bowl-nutrition={JSON.stringify(bowl.nutrition)}
               >
@@ -541,107 +547,121 @@ const testimonials = [
 
   <!-- Section: Main Plan (Interactive) -->
   <section id="planes" class="py-24 bg-brand-light relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
         <span class="font-cursive text-brand-gold text-3xl block">Planes Nutricionales</span>
         <h2 class="font-serif text-3xl md:text-5xl font-extrabold text-brand-dark">
           Plan de Alimentación
         </h2>
         <p class="text-gray-600">
-          Selecciona el tamaño y frecuencia idóneos para recibir tu comida saludable directamente en tu oficina o casa.
+          Selecciona el tamaño, la frecuencia y la modalidad de tu plan de alimentación saludable.
         </p>
+      </div>
 
-        <!-- Toggle Selectors -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-6 pt-8">
-          <!-- Tamaño Selector -->
-          <div class="bg-white p-1.5 rounded-full shadow-sm border border-gray-200 flex">
-            <button 
-              type="button" 
-              class="size-toggle-btn px-6 py-2 rounded-full text-sm font-bold transition-all bg-brand-gold text-white" 
-              data-size="mediano"
-            >
-              Mediano (~400g)
-            </button>
-            <button 
-              type="button" 
-              class="size-toggle-btn px-6 py-2 rounded-full text-sm font-semibold transition-all text-gray-600 hover:text-brand-gold" 
-              data-size="grande"
-            >
-              Grande (~650g)
-            </button>
-          </div>
+      <!-- Toggle Selectors above the card -->
+      <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 pt-4 pb-12">
+        <!-- Tamaño Selector -->
+        <div class="bg-white p-1 rounded-full shadow-sm border border-gray-200 flex">
+          <button 
+            type="button" 
+            class="size-toggle-btn px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 active:scale-95 cursor-pointer bg-brand-gold text-white shadow-sm scale-[1.02]" 
+            data-size="mediano"
+          >
+            Mediano
+          </button>
+          <button 
+            type="button" 
+            class="size-toggle-btn px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 active:scale-95 cursor-pointer text-gray-600 hover:text-brand-gold hover:bg-gray-50/50" 
+            data-size="grande"
+          >
+            Grande
+          </button>
+        </div>
 
-          <!-- Frecuencia Selector -->
-          <div class="bg-white p-1.5 rounded-full shadow-sm border border-gray-200 flex">
-            <button 
-              type="button" 
-              class="freq-toggle-btn px-5 py-2 rounded-full text-sm font-semibold transition-all text-gray-600 hover:text-brand-gold" 
-              data-freq="diario"
-            >
-              Diario
-            </button>
-            <button 
-              type="button" 
-              class="freq-toggle-btn px-5 py-2 rounded-full text-sm font-bold transition-all bg-brand-gold text-white" 
-              data-freq="semanal"
-            >
-              Semanal (5d)
-            </button>
-            <button 
-              type="button" 
-              class="freq-toggle-btn px-5 py-2 rounded-full text-sm font-semibold transition-all text-gray-600 hover:text-brand-gold" 
-              data-freq="mensual"
-            >
-              Mensual (20d)
-            </button>
-          </div>
+        <!-- Frecuencia Selector -->
+        <div class="bg-white p-1 rounded-full shadow-sm border border-gray-200 flex flex-wrap justify-center">
+          <button 
+            type="button" 
+            class="freq-toggle-btn px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 active:scale-95 cursor-pointer text-gray-600 hover:text-brand-gold hover:bg-gray-50/50" 
+            data-freq="diario"
+          >
+            Diario
+          </button>
+          <button 
+            type="button" 
+            class="freq-toggle-btn px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 active:scale-95 cursor-pointer text-gray-600 hover:text-brand-gold hover:bg-gray-50/50" 
+            data-freq="flexible"
+          >
+            Flexible
+          </button>
+          <button 
+            type="button" 
+            class="freq-toggle-btn px-4 py-2 rounded-full text-sm font-bold transition-all duration-300 active:scale-95 cursor-pointer bg-brand-gold text-white shadow-sm scale-[1.02]" 
+            data-freq="semanal"
+          >
+            Semanal
+          </button>
+          <button 
+            type="button" 
+            class="freq-toggle-btn px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 active:scale-95 cursor-pointer text-gray-600 hover:text-brand-gold hover:bg-gray-50/50" 
+            data-freq="mensual"
+          >
+            Mensual
+          </button>
+        </div>
+
+        <!-- Opción Selector (Individual / Grupal) -->
+        <div 
+          id="option-selector-container" 
+          class="bg-white p-1 rounded-full shadow-sm border border-gray-200 flex transition-all duration-500 ease-out origin-center"
+          style="max-width: 400px;"
+        >
+          <button 
+            type="button" 
+            class="option-toggle-btn px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 active:scale-95 cursor-pointer bg-brand-gold text-white shadow-sm scale-[1.02]" 
+            data-option="individual"
+          >
+            Individual
+          </button>
+          <button 
+            type="button" 
+            class="option-toggle-btn px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 active:scale-95 cursor-pointer text-gray-600 hover:text-brand-gold hover:bg-gray-50/50" 
+            data-option="grupal"
+          >
+            Grupal
+          </button>
         </div>
       </div>
 
-      <!-- Plan Cards Grid -->
+      <!-- Plan Cards Grid (Centered below) -->
       <div class="max-w-md mx-auto items-stretch">
-        <!-- Plan 1: Balance Vital -->
-        <div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100 flex flex-col transform transition hover:-translate-y-1 hover:shadow-2xl">
-          <div class="inline-block px-3 py-1 bg-brand-gold/10 text-brand-gold-dark text-xs font-bold rounded-full w-fit mb-4 uppercase">
-            Nutrición Premium
+        <!-- Plan Card -->
+        <div class="bg-white rounded-3xl p-8 shadow-xl border border-brand-gold/25 flex flex-col transform transition duration-300 hover:shadow-2xl hover:border-brand-gold/45">
+          <div id="plan-badge" class="inline-block px-3 py-1 bg-brand-gold/10 text-brand-gold-dark text-xs font-bold rounded-full w-fit mb-4 uppercase">
+            El Más Popular
           </div>
-          <h3 class="font-serif text-3xl font-bold text-gray-900 mb-2">Plan Montalvo</h3>
-          <p class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
-            Ideal para mantener tu día con energía constante. Aporta carbohidratos complejos balanceados, grasas buenas y proteína magra en proporciones equilibradas.
+          <h3 id="plan-title" class="font-serif text-3xl font-bold text-gray-900 mb-2">Plan Semanal</h3>
+          <p id="desc-plan-detail" class="text-gray-500 text-sm leading-relaxed mb-6 flex-grow">
+            Consta de 5 bowls que puede consumir durante el periodo de hasta 2 semanas, los días de consumo son a elección del cliente.
           </p>
 
           <div class="mb-8 border-y border-gray-100 py-6">
             <div class="flex items-baseline gap-2">
-              <span id="price-balance" class="text-5xl font-extrabold text-brand-dark">Bs. 140</span>
-              <span id="period-balance" class="text-gray-500 font-semibold text-sm">/semana</span>
+              <span id="price-balance" class="text-5xl font-extrabold text-brand-dark">Bs. 110</span>
+              <span id="period-balance" class="text-gray-500 font-semibold text-sm">/plan (5 bowls)</span>
             </div>
-            <p id="desc-balance" class="text-xs text-gray-400 mt-2 font-medium">Tamaño Mediano, Entregado de Lunes a Viernes</p>
+            <p id="desc-balance" class="text-xs text-gray-400 mt-2 font-medium">Precio con descuento de 22 bs por bowl.</p>
           </div>
 
-          <ul class="space-y-4 mb-8">
-            <li class="flex items-center text-sm font-semibold text-gray-700">
-              <span class="w-5 h-5 rounded-full bg-brand-gold/20 text-brand-gold-dark flex items-center justify-center text-xs mr-3">✓</span>
-              Almuerzo Completo y Balanceado
-            </li>
-            <li class="flex items-center text-sm font-semibold text-gray-700">
-              <span class="w-5 h-5 rounded-full bg-brand-gold/20 text-brand-gold-dark flex items-center justify-center text-xs mr-3">✓</span>
-              Enfoque en carbohidratos de digestión lenta
-            </li>
-            <li class="flex items-center text-sm font-semibold text-gray-700">
-              <span class="w-5 h-5 rounded-full bg-brand-gold/20 text-brand-gold-dark flex items-center justify-center text-xs mr-3">✓</span>
-              Delivery directo a tu oficina o casa
-            </li>
-            <li class="flex items-center text-sm font-semibold text-gray-700">
-              <span class="w-5 h-5 rounded-full bg-brand-gold/20 text-brand-gold-dark flex items-center justify-center text-xs mr-3">✓</span>
-              Nutrición calculada por especialistas
-            </li>
+          <ul id="plan-advantages" class="space-y-4 mb-8">
+            <!-- Ventajas dinámicas cargadas por JS -->
           </ul>
 
           <a 
             id="btn-buy-balance"
             href="#" 
             target="_blank" 
-            class="w-full bg-brand-gold hover:bg-brand-gold-dark text-white text-center py-4 rounded-xl font-bold uppercase tracking-wider text-xs transition-all shadow-sm"
+            class="w-full bg-brand-gold hover:bg-brand-gold-dark text-white text-center py-4 rounded-xl font-bold uppercase tracking-wider text-xs transition-all duration-300 shadow-md hover:-translate-y-0.5 active:scale-98 cursor-pointer"
           >
             Suscribirme al Plan
           </a>
@@ -841,7 +861,7 @@ const testimonials = [
                   </div>
                   <div class="flex flex-col">
                     <span class="font-bold text-sm text-gray-700">Mediano</span>
-                    <span class="text-xs text-gray-400">~400g de balance</span>
+                    <span class="text-xs text-gray-400">300 - 320 gr</span>
                   </div>
                 </div>
                 <span id="modal-price-mediano-badge" class="font-bold text-brand-gold-dark text-sm">Bs. 24</span>
@@ -856,7 +876,7 @@ const testimonials = [
                   </div>
                   <div class="flex flex-col">
                     <span class="font-bold text-sm text-gray-700">Grande</span>
-                    <span class="text-xs text-gray-400">~650g de rendimiento</span>
+                    <span class="text-xs text-gray-400">450 - 500 gr</span>
                   </div>
                 </div>
                 <span id="modal-price-grande-badge" class="font-bold text-brand-gold-dark text-sm">Bs. 37</span>
@@ -877,11 +897,11 @@ const testimonials = [
             <span class="block text-xs font-bold uppercase tracking-wider text-brand-gold-dark">Ingredientes Base Incluidos:</span>
             <div class="space-y-2 text-xs text-gray-600">
               <div class="flex items-start gap-2">
-                <strong class="text-gray-700 w-20 shrink-0">Carbohidrato:</strong>
+                <strong id="modal-fixed-carb-label" class="text-gray-700 w-32 shrink-0">Carbohidrato:</strong>
                 <span id="modal-fixed-carb" class="text-gray-600">Quinua Real</span>
               </div>
               <div class="flex items-start gap-2">
-                <strong class="text-gray-700 w-20 shrink-0">Vegetales:</strong>
+                <strong id="modal-fixed-veg-label" class="text-gray-700 w-32 shrink-0">Vegetales:</strong>
                 <span id="modal-fixed-veg" class="text-gray-600">Mix del Wok</span>
               </div>
             </div>
@@ -980,36 +1000,172 @@ const testimonials = [
   // State variables for Plans
   let selectedSize = 'mediano';
   let selectedFreq = 'semanal';
+  let selectedOption = 'individual';
 
   const planPrices = {
-    balance: {
-      mediano: { diario: 30, semanal: 140, mensual: 520 },
-      grande: { diario: 40, semanal: 190, mensual: 720 }
+    diario: {
+      mediano: { individual: 24, grupal: 24 },
+      grande: { individual: 37, grupal: 37 }
+    },
+    flexible: {
+      mediano: { individual: 69, grupal: 207 },
+      grande: { individual: 108, grupal: 324 }
+    },
+    semanal: {
+      mediano: { individual: 110, grupal: 330 },
+      grande: { individual: 175, grupal: 525 }
+    },
+    mensual: {
+      mediano: { individual: 400, grupal: 1200 },
+      grande: { individual: 660, grupal: 1980 }
     }
+  };
+
+  const planTitlesText = {
+    diario: 'Plan Diario',
+    flexible: 'Plan Flexible',
+    semanal: 'Plan Semanal',
+    mensual: 'Plan Mensual'
   };
 
   const planFrequenciesText = {
-    diario: '/día',
-    semanal: '/semana',
-    mensual: '/mes'
+    diario: ' /bowl',
+    flexible: ' /plan (3 bowls)',
+    semanal: ' /plan (5 bowls)',
+    mensual: ' /plan (20 bowls)'
   };
 
-  const planDescriptionsText = {
-    mediano: {
-      diario: 'Tamaño Mediano (~400g), Almuerzo diario',
-      semanal: 'Tamaño Mediano (~400g), Lunes a Viernes (5 días)',
-      mensual: 'Tamaño Mediano (~400g), 4 semanas (20 días)'
+  const planDescriptionsMain = {
+    diario: {
+      individual: 'Consta de 1 bowl que se pide con un día de anticipación o el mismo día de consumo.',
+      grupal: 'Consta de 1 bowl que se pide con un día de anticipación o el mismo día de consumo.'
     },
-    grande: {
-      diario: 'Tamaño Grande (~650g), Almuerzo diario',
-      semanal: 'Tamaño Grande (~650g), Lunes a Viernes (5 días)',
-      mensual: 'Tamaño Grande (~650g), 4 semanas (20 días)'
+    flexible: {
+      individual: 'Consta de 3 bowls que puede consumir durante el periodo de hasta 2 semanas para 1 persona, los días de consumo son a elección del cliente.',
+      grupal: 'Consta de 3 bowls que puede consumir durante el periodo de hasta 2 semanas en grupo (aplica desde 3 personas), los días de consumo son a elección del cliente.'
+    },
+    semanal: {
+      individual: 'Consta de 5 bowls que puede consumir durante el periodo de hasta 2 semanas para 1 persona, los días de consumo son a elección del cliente.',
+      grupal: 'Consta de 5 bowls que puede consumir durante el periodo de hasta 2 semanas en grupo (aplica desde 3 personas), los días de consumo son a elección del cliente.'
+    },
+    mensual: {
+      individual: 'Consta de 20 bowls que puede consumir durante el periodo de hasta 6 semanas para 1 persona, los días de consumo son a elección del cliente.',
+      grupal: 'Consta de 20 bowls que puede consumir durante el periodo de hasta 6 semanas en grupo (aplica desde 3 personas), los días de consumo son a elección del cliente.'
     }
   };
 
+  const planDescriptionsText = {
+    diario: {
+      mediano: {
+        individual: 'Tamaño Mediano (300 - 320 gr)',
+        grupal: 'Tamaño Mediano (300 - 320 gr)'
+      },
+      grande: {
+        individual: 'Tamaño Grande (450 - 500 gr)',
+        grupal: 'Tamaño Grande (450 - 500 gr)'
+      }
+    },
+    flexible: {
+      mediano: {
+        individual: 'Tamaño Mediano (300 - 320 gr) • Descuento de 23 bs por bowl.',
+        grupal: 'Tamaño Mediano (300 - 320 gr) • Aplica desde 3 personas (23 bs por bowl por persona).'
+      },
+      grande: {
+        individual: 'Tamaño Grande (450 - 500 gr) • Descuento de 36 bs por bowl.',
+        grupal: 'Tamaño Grande (450 - 500 gr) • Aplica desde 3 personas (36 bs por bowl por persona).'
+      }
+    },
+    semanal: {
+      mediano: {
+        individual: 'Tamaño Mediano (300 - 320 gr) • Descuento de 22 bs por bowl.',
+        grupal: 'Tamaño Mediano (300 - 320 gr) • Aplica desde 3 personas (22 bs por bowl por persona).'
+      },
+      grande: {
+        individual: 'Tamaño Grande (450 - 500 gr) • Descuento de 35 bs por bowl.',
+        grupal: 'Tamaño Grande (450 - 500 gr) • Aplica desde 3 personas (35 bs por bowl por persona).'
+      }
+    },
+    mensual: {
+      mediano: {
+        individual: 'Tamaño Mediano (300 - 320 gr) • Descuento de 20 bs por bowl.',
+        grupal: 'Tamaño Mediano (300 - 320 gr) • Aplica desde 3 personas (20 bs por bowl por persona).'
+      },
+      grande: {
+        individual: 'Tamaño Grande (450 - 500 gr) • Descuento de 33 bs por bowl.',
+        grupal: 'Tamaño Grande (450 - 500 gr) • Aplica desde 3 personas (33 bs por bowl por persona).'
+      }
+    }
+  };
+
+  const activeClasses = ['bg-brand-gold', 'text-white', 'shadow-sm', 'scale-[1.02]', 'font-bold'];
+  const inactiveClasses = ['text-gray-600', 'hover:text-brand-gold', 'hover:bg-gray-50/50', 'font-semibold'];
+
+  const planBadgesText = {
+    diario: 'Prueba Rápida',
+    flexible: 'Flexibilidad Total',
+    semanal: 'El Más Popular',
+    mensual: 'Mejor Ahorro'
+  };
+
+  const planBenefits = {
+    diario: [
+      'Ideal para probar nuestro sabor sin compromisos',
+      'Pedido flexible (el mismo día o 1 día antes)',
+      'Delivery puntual directo a tu oficina o casa',
+      'Nutrición balanceada calculada por especialistas'
+    ],
+    flexible: [
+      'Consume tus 3 bowls en un periodo de hasta 2 semanas',
+      'Días de consumo 100% a tu elección',
+      'Descuento aplicado por cada bowl',
+      'Modalidades: Individual o Grupal (más ahorro)',
+      'Delivery programado incluido'
+    ],
+    semanal: [
+      'Consume tus 5 bowls en un periodo de hasta 2 semanas',
+      'Días de consumo a tu elección',
+      'Descuento intermedio aplicado por bowl',
+      'Ideal para mantener tu hábito saludable',
+      'Modalidades: Individual o Grupal',
+      'Delivery programado incluido'
+    ],
+    mensual: [
+      'Máximo ahorro aplicado en cada bowl',
+      'Consume tus 20 bowls en un periodo de hasta 6 semanas',
+      'Días de consumo libres a elección del cliente',
+      'Opción ideal para equipos de oficina (Grupal)',
+      'Asesoramiento básico de nuestra nutricionista',
+      'Envío prioritario y programado a tu mesa'
+    ]
+  };
+
   function updatePlansUI() {
+    // Hide/Show option selector container with smooth transition
+    const optionSelectorContainer = document.getElementById('option-selector-container');
+    if (optionSelectorContainer) {
+      if (selectedFreq === 'diario') {
+        optionSelectorContainer.style.opacity = '0';
+        optionSelectorContainer.style.transform = 'scale(0.9)';
+        optionSelectorContainer.style.maxWidth = '0px';
+        optionSelectorContainer.style.padding = '0px';
+        optionSelectorContainer.style.margin = '0px';
+        optionSelectorContainer.style.borderWidth = '0px';
+        optionSelectorContainer.style.pointerEvents = 'none';
+        optionSelectorContainer.style.overflow = 'hidden';
+      } else {
+        optionSelectorContainer.style.opacity = '1';
+        optionSelectorContainer.style.transform = 'scale(1)';
+        optionSelectorContainer.style.maxWidth = '400px';
+        optionSelectorContainer.style.padding = '4px';
+        optionSelectorContainer.style.margin = '';
+        optionSelectorContainer.style.borderWidth = '1px';
+        optionSelectorContainer.style.pointerEvents = 'auto';
+        optionSelectorContainer.style.overflow = 'visible';
+      }
+    }
+
     // Pricing
-    const balancePriceVal = planPrices.balance[selectedSize][selectedFreq];
+    const balancePriceVal = planPrices[selectedFreq][selectedSize][selectedOption];
     const suffix = planFrequenciesText[selectedFreq];
 
     const priceBalanceEl = document.getElementById('price-balance');
@@ -1018,20 +1174,48 @@ const testimonials = [
     if (priceBalanceEl) priceBalanceEl.textContent = `Bs. ${balancePriceVal}`;
     if (periodBalanceEl) periodBalanceEl.textContent = suffix;
 
+    // Title
+    const planTitleEl = document.getElementById('plan-title');
+    if (planTitleEl) planTitleEl.textContent = planTitlesText[selectedFreq];
+
+    // Main Description
+    const descPlanDetailEl = document.getElementById('desc-plan-detail');
+    if (descPlanDetailEl) descPlanDetailEl.textContent = planDescriptionsMain[selectedFreq][selectedOption];
+
+    // Badge
+    const planBadgeEl = document.getElementById('plan-badge');
+    if (planBadgeEl) planBadgeEl.textContent = planBadgesText[selectedFreq];
+
     // Descriptions
-    const descText = planDescriptionsText[selectedSize][selectedFreq];
+    const descText = planDescriptionsText[selectedFreq][selectedSize][selectedOption];
     const descBalanceEl = document.getElementById('desc-balance');
 
     if (descBalanceEl) descBalanceEl.textContent = descText;
 
+    // Advantages
+    const planAdvantagesEl = document.getElementById('plan-advantages');
+    if (planAdvantagesEl) {
+      planAdvantagesEl.innerHTML = '';
+      planBenefits[selectedFreq].forEach(benefit => {
+        const li = document.createElement('li');
+        li.className = 'flex items-start text-sm font-semibold text-gray-700';
+        li.innerHTML = `
+          <span class="w-5 h-5 rounded-full bg-brand-gold/15 text-brand-gold-dark flex items-center justify-center text-xs mr-3 shrink-0 mt-0.5">✓</span>
+          <span>${benefit}</span>
+        `;
+        planAdvantagesEl.appendChild(li);
+      });
+    }
+
     // Buy Button Links
-    const sizeTextReadable = selectedSize === 'mediano' ? 'Mediano (~400g)' : 'Grande (~650g)';
-    const freqTextReadable = selectedFreq === 'diario' ? 'Diario (1 día)' : selectedFreq === 'semanal' ? 'Semanal (5 días)' : 'Mensual (20 días)';
+    const sizeTextReadable = selectedSize === 'mediano' ? 'Mediano (300-320g)' : 'Grande (450-500g)';
+    const freqTextReadable = selectedFreq === 'diario' ? 'Diario (1 bowl)' : selectedFreq === 'flexible' ? 'Flexible (3 bowls)' : selectedFreq === 'semanal' ? 'Semanal (5 bowls)' : 'Mensual (20 bowls)';
+    const optionTextReadable = selectedFreq === 'diario' ? '' : `\n- Modalidad: ${selectedOption === 'individual' ? 'Individual' : 'Grupal (3+ personas)'}`;
     
     const btnBuyBalanceEl = document.getElementById('btn-buy-balance');
 
     if (btnBuyBalanceEl) {
-      const planMsg = `Hola! Me interesa suscribirme al *Plan Montalvo*\n- Tamaño: ${sizeTextReadable}\n- Frecuencia: ${freqTextReadable}\n- Precio: Bs. ${balancePriceVal}`;
+      const planMsg = `Hola! Me interesa suscribirme al *${planTitlesText[selectedFreq]}*\n- Tamaño: ${sizeTextReadable}\n- Frecuencia: ${freqTextReadable}${optionTextReadable}\n- Precio: Bs. ${balancePriceVal}`;
       const finalBase = isMobileDev ? baseWhatsappLink : baseWhatsappLink.replace('api.whatsapp.com/send', 'web.whatsapp.com/send');
       btnBuyBalanceEl.href = `${finalBase}&text=${encodeURIComponent(planMsg)}`;
     }
@@ -1041,13 +1225,13 @@ const testimonials = [
   document.querySelectorAll('.size-toggle-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       document.querySelectorAll('.size-toggle-btn').forEach(b => {
-        b.classList.remove('bg-brand-gold', 'text-white');
-        b.classList.add('text-gray-600', 'hover:text-brand-gold');
+        b.classList.remove(...activeClasses);
+        b.classList.add(...inactiveClasses);
       });
-      e.target.classList.add('bg-brand-gold', 'text-white');
-      e.target.classList.remove('text-gray-600', 'hover:text-brand-gold');
+      e.currentTarget.classList.add(...activeClasses);
+      e.currentTarget.classList.remove(...inactiveClasses);
       
-      selectedSize = e.target.dataset.size;
+      selectedSize = e.currentTarget.dataset.size;
       updatePlansUI();
     });
   });
@@ -1055,13 +1239,28 @@ const testimonials = [
   document.querySelectorAll('.freq-toggle-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       document.querySelectorAll('.freq-toggle-btn').forEach(b => {
-        b.classList.remove('bg-brand-gold', 'text-white');
-        b.classList.add('text-gray-600', 'hover:text-brand-gold');
+        b.classList.remove(...activeClasses);
+        b.classList.add(...inactiveClasses);
       });
-      e.target.classList.add('bg-brand-gold', 'text-white');
-      e.target.classList.remove('text-gray-600', 'hover:text-brand-gold');
+      e.currentTarget.classList.add(...activeClasses);
+      e.currentTarget.classList.remove(...inactiveClasses);
 
-      selectedFreq = e.target.dataset.freq;
+      selectedFreq = e.currentTarget.dataset.freq;
+      updatePlansUI();
+    });
+  });
+
+  // Setup option toggles
+  document.querySelectorAll('.option-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      document.querySelectorAll('.option-toggle-btn').forEach(b => {
+        b.classList.remove(...activeClasses);
+        b.classList.add(...inactiveClasses);
+      });
+      e.currentTarget.classList.add(...activeClasses);
+      e.currentTarget.classList.remove(...inactiveClasses);
+
+      selectedOption = e.currentTarget.dataset.option;
       updatePlansUI();
     });
   });
@@ -1075,14 +1274,18 @@ const testimonials = [
     prices: {},
     selectedSize: 'mediano',
     selectedProtein: '',
+    carbLabel: '',
     carb: '',
+    vegLabel: '',
     veg: ''
   };
 
   const orderModal = document.getElementById('order-modal');
   const modalBowlTitle = document.getElementById('modal-bowl-title');
   const modalProteinContainer = document.getElementById('modal-protein-container');
+  const modalFixedCarbLabel = document.getElementById('modal-fixed-carb-label');
   const modalFixedCarb = document.getElementById('modal-fixed-carb');
+  const modalFixedVegLabel = document.getElementById('modal-fixed-veg-label');
   const modalFixedVeg = document.getElementById('modal-fixed-veg');
   const modalTotalPrice = document.getElementById('modal-total-price');
   const modalWhatsappBtn = document.getElementById('modal-whatsapp-btn');
@@ -1118,14 +1321,16 @@ const testimonials = [
   tabBtnCustomize?.addEventListener('click', () => switchModalTab('customize'));
   tabBtnNutrition?.addEventListener('click', () => switchModalTab('nutrition'));
 
-  function openModal(name, id, prices, proteins, carb, veg, nutrition) {
+  function openModal(name, id, prices, proteins, carbLabel, carb, vegLabel, veg, nutrition) {
     currentBowlData = {
       id,
       name,
       prices,
       selectedSize: 'mediano',
       selectedProtein: proteins[0] || '',
+      carbLabel,
       carb,
+      vegLabel,
       veg
     };
 
@@ -1187,8 +1392,10 @@ const testimonials = [
       updateProteinSelectionUI();
     }
 
-    // Set fixed values
+    // Set fixed values and dynamic labels
+    if (modalFixedCarbLabel) modalFixedCarbLabel.textContent = `${carbLabel}:`;
     if (modalFixedCarb) modalFixedCarb.textContent = carb;
+    if (modalFixedVegLabel) modalFixedVegLabel.textContent = `${vegLabel}:`;
     if (modalFixedVeg) modalFixedVeg.textContent = veg;
 
     // Set badge prices
@@ -1338,7 +1545,7 @@ const testimonials = [
   function updateModalWhatsappLink() {
     const price = currentBowlData.prices[currentBowlData.selectedSize];
     const sizeText = currentBowlData.selectedSize === 'mediano' ? 'Mediano' : 'Grande';
-    const message = `Hola Montalvo Catering! Quiero pedir el *${currentBowlData.name}*:\n- Tamaño: ${sizeText}\n- Proteína: ${currentBowlData.selectedProtein}\n- Carbohidrato: ${currentBowlData.carb}\n- Vegetales: ${currentBowlData.veg}\nPrecio: Bs. ${price}`;
+    const message = `Hola Montalvo Catering! Quiero pedir el *${currentBowlData.name}*:\n- Tamaño: ${sizeText}\n- Proteína: ${currentBowlData.selectedProtein}\n- ${currentBowlData.carbLabel}: ${currentBowlData.carb}\n- ${currentBowlData.vegLabel}: ${currentBowlData.veg}\nPrecio: Bs. ${price}`;
     
     if (modalWhatsappBtn) {
       const finalBase = isMobileDev ? bowlsWhatsappLink : bowlsWhatsappLink.replace('api.whatsapp.com/send', 'web.whatsapp.com/send');
@@ -1355,11 +1562,13 @@ const testimonials = [
       const id = target.dataset.bowlId;
       const prices = JSON.parse(target.dataset.bowlPrices);
       const proteins = JSON.parse(target.dataset.bowlProteins);
+      const carbLabel = target.dataset.bowlCarbLabel;
       const carb = target.dataset.bowlCarb;
+      const vegLabel = target.dataset.bowlVegLabel;
       const veg = target.dataset.bowlVeg;
       const nutrition = JSON.parse(target.dataset.bowlNutrition || '{}');
       
-      openModal(name, id, prices, proteins, carb, veg, nutrition);
+      openModal(name, id, prices, proteins, carbLabel, carb, vegLabel, veg, nutrition);
     });
   });
 
