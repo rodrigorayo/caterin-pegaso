@@ -472,7 +472,7 @@ const testimonials = [
               <div class="border-t border-gray-100 pt-3 space-y-1.5 text-xs">
                 <div class="flex items-start gap-2 text-gray-600">
                   <strong class="w-32 shrink-0 text-brand-dark font-bold">{bowl.carbLabel}:</strong>
-                  <span>{bowl.carb}</span>
+                  <span class={bowl.id === 'fresco' ? "font-bold text-gray-950" : ""}>{bowl.carb}</span>
                 </div>
                 <div class="flex items-start gap-2 text-gray-600">
                   <strong class="w-32 shrink-0 text-brand-dark font-bold">{bowl.vegLabel}:</strong>
@@ -1394,7 +1394,16 @@ const testimonials = [
 
     // Set fixed values and dynamic labels
     if (modalFixedCarbLabel) modalFixedCarbLabel.textContent = `${carbLabel}:`;
-    if (modalFixedCarb) modalFixedCarb.textContent = carb;
+    if (modalFixedCarb) {
+      modalFixedCarb.textContent = carb;
+      if (id === 'fresco') {
+        modalFixedCarb.classList.add('font-bold', 'text-gray-950');
+        modalFixedCarb.classList.remove('text-gray-600');
+      } else {
+        modalFixedCarb.classList.remove('font-bold', 'text-gray-950');
+        modalFixedCarb.classList.add('text-gray-600');
+      }
+    }
     if (modalFixedVegLabel) modalFixedVegLabel.textContent = `${vegLabel}:`;
     if (modalFixedVeg) modalFixedVeg.textContent = veg;
 
